@@ -1,3 +1,12 @@
+dh-make-perl (0.84-2) unstable; urgency=medium
+
+  * Add runtime dependency on libyaml-libyaml-perl.
+    DhMakePerl::Command::Packaging uses YAML::XS but there was no
+    dependency on the respective package.
+    Thanks to Moritz Lenz for the bug report. (Closes: #775725)
+
+ -- gregor herrmann <gregoa@debian.org>  Wed, 21 Jan 2015 18:56:38 +0100
+
 dh-make-perl (0.84-1) unstable; urgency=medium
 
   [ Salvatore Bonaccorso ]
