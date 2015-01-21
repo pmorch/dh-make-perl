@@ -44,3 +44,7 @@
   --check-dirname-regex options; run debuild --help for more info.
 * quilt support looks like a candidate for dropping
 * make/refresh: add "Multi-Arch: same" header to arch-dep packages
+* clean up after #774862.
+  currently we use YAML and YAML::XS. one should be enough, probably
+  YAML::XS or YAML::Tiny or ... additionally YAML::XS is nowhere in the
+  metadata, and the tests didn't catch the ommission either.
