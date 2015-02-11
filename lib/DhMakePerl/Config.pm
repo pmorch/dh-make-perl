@@ -145,10 +145,6 @@ sub parse_command_line_options {
     GetOptions( \%opts, @OPTIONS )
         or die "Error parsing command-line options\n";
 
-    # Make CPAN happy, make the user happy: Be more tolerant!
-    # Accept names to be specified with double-colon, dash or slash
-    $opts{cpan} =~ s![/-]!::!g if $opts{cpan};
-
     # "If no argument is given (but the switch is specified - not specifying
     # the switch will include everything), it defaults to dpkg-source's
     # default values."
@@ -225,6 +221,13 @@ sub parse_command_line_options {
         $self->_explicitly_set->{cpan} = 1;
         $self->build_source(1);
         $self->command('make');
+    }
+
+    # Make CPAN happy, make the user happy: Be more tolerant!
+    # Accept names to be specified with double-colon, dash or slash
+    if ( my $name = $self->cpan ) {
+        $name =~ s![/-]!::!g;
+        $self->cpan($name);
     }
 
     $self->check_obsolete_entries;
