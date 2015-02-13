@@ -1,3 +1,10 @@
+dh-make-perl (0.84-3) UNRELEASED; urgency=medium
+
+  * Config: fixup module name after possible setting it when run as 'cpan2deb'
+    (Closes: #777718 -- cpan2deb using wrong module from CPAN)
+
+ -- Damyan Ivanov <dmn@debian.org>  Fri, 13 Feb 2015 10:16:06 +0000
+
 dh-make-perl (0.84-2) unstable; urgency=medium
 
   * Add runtime dependency on libyaml-libyaml-perl.
