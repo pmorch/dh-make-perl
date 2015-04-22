@@ -36,6 +36,7 @@ use DhMakePerl::PodParser ();
 use File::Basename qw(basename dirname);
 use File::Find qw(find);
 use File::Path ();
+use File::Which;
 use File::Spec::Functions qw(catfile catpath splitpath);
 use Parse::DebianChangelog;
 use Text::Balanced qw(extract_quotelike);
@@ -1386,6 +1387,14 @@ sub discover_dependencies {
                 intrusive    => $self->cfg->intrusive,
             }
         );
+    }
+    elsif (which('apt-file')) {
+        warn "No APT contents can be loaded but apt-file seems installed.\n";
+        warn "Please run 'apt-file update' as root.\n";
+        warn "(If that doesn't help, please report a bug against dh-make-perl.)\n";
+        warn "Dependencies not updated.\n";
+
+        return ();
     }
     else {
         warn "No APT contents can be loaded.\n";

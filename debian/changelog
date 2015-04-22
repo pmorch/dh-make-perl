@@ -1,9 +1,14 @@
 dh-make-perl (0.84-3) UNRELEASED; urgency=medium
 
+  [ Damyan Ivanov ]
   * Config: fixup module name after possible setting it when run as 'cpan2deb'
     (Closes: #777718 -- cpan2deb using wrong module from CPAN)
 
- -- Damyan Ivanov <dmn@debian.org>  Fri, 13 Feb 2015 10:16:06 +0000
+  [ Axel Beckert ]
+  * Improve misleading error message if apt-file installed but no contents
+    files could be found.
+
+ -- Axel Beckert <abe@debian.org>  Wed, 22 Apr 2015 20:30:03 +0200
 
 dh-make-perl (0.84-2) unstable; urgency=medium
 
