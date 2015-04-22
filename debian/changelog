@@ -7,6 +7,8 @@ dh-make-perl (0.84-3) UNRELEASED; urgency=medium
   [ Axel Beckert ]
   * Improve misleading error message if apt-file installed but no contents
     files could be found.
+  * Fix parsing of sources.list entry with options in brackets. (Closes:
+    #783110; Thanks Lucas Nussbaum for the bug report.)
 
  -- Axel Beckert <abe@debian.org>  Wed, 22 Apr 2015 20:30:03 +0200
 

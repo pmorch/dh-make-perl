@@ -163,6 +163,9 @@ F<sources.list>), converts it to the corresponding F<Contents> file names.
 sub repo_source_to_contents_paths {
     my ( $self, $source ) = @_;
 
+    # Weed out options in brackets first
+    $source =~ s/\[[^][]+\]//;
+
     my ( $schema, $uri, $dist, @components ) = split /\s+/, $source;
     my ( $proto, $host, $port, $dir ) = $uri =~ m{
 	^
