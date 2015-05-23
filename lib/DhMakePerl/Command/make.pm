@@ -713,10 +713,20 @@ EOF
     return $found ? 1 : 0;
 }
 
+sub reset_git_environment {
+    # The Git environment variables may be set from previous iterations
+    # of this program being run. In this case, it's possible that the
+    # Git module will use these to point to the wrong source tree.
+    delete $ENV{'GIT_DIR'};
+    delete $ENV{'GIT_WORK_TREE'};
+}
+
 sub git_import_upstream__init_debian {
     my ( $self ) = @_;
 
     require Git;
+
+    $self->reset_git_environment();
 
     Git::command( 'init', $self->main_dir );
 
@@ -747,6 +757,8 @@ sub git_add_debian {
 
     require Git;
     require File::Which;
+
+    $self->reset_git_environment;
 
     my $git = Git->repository( $self->main_dir );
     $git->command( 'add', 'debian' );
