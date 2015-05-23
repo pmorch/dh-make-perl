@@ -10,6 +10,15 @@ dh-make-perl (0.84-3) UNRELEASED; urgency=medium
   * Fix parsing of sources.list entry with options in brackets. (Closes:
     #783110; Thanks Lucas Nussbaum for the bug report.)
 
+  [ Andy Beverley ]
+  * Check existing new directory name before attempting a rename to it
+    (Closes: #774071)
+  * Reset Git environment variables to ensure correct repo is used
+    (Closes: #774070)
+  * Use correct location for deb when using install option
+    (Closes: #774072)
+
+
  -- Axel Beckert <abe@debian.org>  Wed, 22 Apr 2015 20:30:03 +0200
 
 dh-make-perl (0.84-2) unstable; urgency=medium
