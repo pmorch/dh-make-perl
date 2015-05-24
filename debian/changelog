@@ -19,6 +19,14 @@ dh-make-perl (0.84-3) UNRELEASED; urgency=medium
     (Closes: #774072)
 
 
+  [ Damyan Ivanov ]
+  * run 'dpkg -i pkg.deb' with sudo if we aren't root
+  * bump years of copyright
+  * new routine, info() for printing stuff in verbose mode, with an 'I: ' prefix
+  * print the dpkg -i command
+  * Packaging: parse 'dist.ini' if present
+  * create_copyright: use copyright year from dist.ini (copyright_year)
+
  -- Axel Beckert <abe@debian.org>  Wed, 22 Apr 2015 20:30:03 +0200
 
 dh-make-perl (0.84-2) unstable; urgency=medium
