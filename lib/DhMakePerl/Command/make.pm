@@ -441,6 +441,7 @@ sub install_package {
     my $deb = $self->main_dir . "/../$debname";
     my $dpkg_cmd = "dpkg -i $deb";
     $dpkg_cmd = "sudo $dpkg_cmd" if $>;
+    $self->info("Running '$dpkg_cmd'...");
     system($dpkg_cmd) == 0
         || die "Cannot install package $deb\n";
 }
