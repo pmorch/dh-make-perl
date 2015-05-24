@@ -1,3 +1,32 @@
+0.85 (2015-05-24)
+
+  [ Damyan Ivanov ]
+  * Config: fixup module name after possible setting it when run as 'cpan2deb'
+    (Closes: #777718 -- cpan2deb using wrong module from CPAN)
+
+  [ Axel Beckert ]
+  * Improve misleading error message if apt-file installed but no contents
+    files could be found.
+  * Fix parsing of sources.list entry with options in brackets. (Closes:
+    #783110; Thanks Lucas Nussbaum for the bug report.)
+
+  [ Andy Beverley ]
+  * Check existing new directory name before attempting a rename to it
+    (Closes: #774071)
+  * Reset Git environment variables to ensure correct repo is used
+    (Closes: #774070)
+  * Use correct location for deb when using install option
+    (Closes: #774072)
+
+
+  [ Damyan Ivanov ]
+  * run 'dpkg -i pkg.deb' with sudo if we aren't root
+  * bump years of copyright
+  * new routine, info() for printing stuff in verbose mode, with an 'I: ' prefix
+  * print the dpkg -i command
+  * Packaging: parse 'dist.ini' if present
+  * create_copyright: use copyright year from dist.ini (copyright_year)
+
 0.84 (2014-10-20)
 
   [ Axel Beckert ]

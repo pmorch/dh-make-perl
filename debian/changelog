@@ -1,4 +1,4 @@
-dh-make-perl (0.84-3) UNRELEASED; urgency=medium
+dh-make-perl (0.85-1) unstable; urgency=medium
 
   [ Damyan Ivanov ]
   * Config: fixup module name after possible setting it when run as 'cpan2deb'
@@ -27,7 +27,7 @@ dh-make-perl (0.84-3) UNRELEASED; urgency=medium
   * Packaging: parse 'dist.ini' if present
   * create_copyright: use copyright year from dist.ini (copyright_year)
 
- -- Axel Beckert <abe@debian.org>  Wed, 22 Apr 2015 20:30:03 +0200
+ -- Damyan Ivanov <dmn@debian.org>  Sun, 24 May 2015 16:12:25 +0000
 
 dh-make-perl (0.84-2) unstable; urgency=medium
 
