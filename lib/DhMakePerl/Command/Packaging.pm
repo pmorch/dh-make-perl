@@ -21,11 +21,13 @@ __PACKAGE__->mk_accessors(
         meta perlname author
         version rules docs examples copyright
         control
+        dist_ini
     )
 );
 
 use Array::Unique;
 use Carp qw(confess);
+use Config::INI::Reader ();
 use CPAN ();
 use CPAN::Meta;
 use Cwd qw( getcwd );
@@ -195,6 +197,10 @@ sub process_meta {
 
     $meta = CPAN::Meta->load_file($meta);
     $self->meta( $meta->as_struct );
+
+    my $dist_ini_fn = $self->main_file('dist.ini');
+    $self->dist_ini( Config::INI::Reader->read_file($dist_ini_fn) )
+        if -e $dist_ini_fn;
 }
 
 sub set_package_name {

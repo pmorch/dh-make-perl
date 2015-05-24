@@ -18,6 +18,7 @@ my $builder = My::Builder->new(
         'AptPkg::Config'            => 0,
         'Array::Unique'             => 0,
         'Carp'                      => 0,
+        'Config::INI::Reader'       => 0,
         'CPAN'                      => 0,
         'CPAN::Meta'                => 0,
         'Cwd'                       => 0,
