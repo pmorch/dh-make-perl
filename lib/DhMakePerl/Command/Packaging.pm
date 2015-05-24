@@ -981,9 +981,16 @@ sub create_copyright {
     # information for anything besides general information.
     push @res, 'Files: *';
 
+    my $cprt_year;
+    if (    $self->dist_ini
+        and $self->dist_ini->{_}{copyright_year} )
+    {
+        $cprt_year = $self->dist_ini->{_}{copyright_year};
+    }
     # Absence of author should have already been reported in the
     # Header section
-    push @res, "Copyright: $cprt_author";
+    push @res,
+        "Copyright: " . ( $cprt_year ? "$cprt_year, " : '' ) . $cprt_author;
 
     # This is far from foolproof, but usually works with most
     # boilerplate-generated modules.
