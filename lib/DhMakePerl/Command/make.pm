@@ -815,6 +815,23 @@ sub warning {
     warn "W: ", @_, "\n";
 }
 
+=item info I<string> ...
+
+In verbose mode, prints supplied arguments on STDERR, prepended with C<I: > and
+suffixed with a new line.
+
+Does nothing in non-verbose mode.
+
+=cut
+
+sub info {
+    my $self = shift;
+
+    return unless $self->cfg->verbose;
+
+    warn "I: ", @_, "\n";
+}
+
 =back
 
 =head1 AUTHOR
