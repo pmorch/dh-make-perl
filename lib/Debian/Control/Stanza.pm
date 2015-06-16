@@ -268,7 +268,7 @@ sub as_string
             # FIXME: this relies on $v being sorted
             my ( @pre_dollar, @dollar, @post_dollar );
             for ( @$v ) {
-                if ( /^\${.+}$/ ) {
+                if ( /^\$\{.+}$/ ) {
                     push @dollar, $_;
                 }
                 elsif (@dollar) {
