@@ -53,7 +53,7 @@ use File::Copy qw( copy move );
 use File::Path ();
 use File::Spec::Functions qw( catdir catfile updir );
 use Module::Depends            ();
-use Module::Build::ModuleInfo;
+use Module::Metadata;
 use Text::Wrap qw( wrap );
 
 sub check_deprecated_overrides {
@@ -675,7 +675,7 @@ sub modules_already_packaged {
                 return;
             }
             if (/.+\.pm$/) {
-                my $mi = Module::Build::ModuleInfo->new_from_file($_);
+                my $mi = Module::Metadata->new_from_file($_);
                 push @modules, $mi->packages_inside;
             }
         },
