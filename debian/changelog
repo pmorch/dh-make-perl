@@ -1,3 +1,11 @@
+dh-make-perl (0.86-1) unstable; urgency=medium
+
+  * Quote left brace in regex. Gives warning under perl 5.22 (Closes: #788894)
+  * Replace usage of Module::Build::ModuleInfo (dropped in perl 5.22) with
+    Module::Metadata (Closes: #788893)
+
+ -- Damyan Ivanov <dmn@debian.org>  Tue, 16 Jun 2015 18:53:30 +0000
+
 dh-make-perl (0.85-1) unstable; urgency=medium
 
   [ Damyan Ivanov ]

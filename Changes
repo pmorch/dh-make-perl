@@ -1,3 +1,9 @@
+0.86 (2015-06-16)
+
+  * Quote left brace in regex. Gives warning under perl 5.22 (Closes: #788894)
+  * Replace usage of Module::Build::ModuleInfo (dropped in perl 5.22) with
+    Module::Metadata (Closes: #788893)
+
 0.85 (2015-05-24)
 
   [ Damyan Ivanov ]
