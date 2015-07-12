@@ -1,3 +1,11 @@
+dh-make-perl (0.87-1) unstable; urgency=medium
+
+  * DpkgLists.t: add support for the new packaging layout in perl 5.22
+    (Closes: #789729 -- FTBFS with perl 5.22)
+  * add upstream signing keyring
+
+ -- Damyan Ivanov <dmn@debian.org>  Sun, 12 Jul 2015 20:44:08 +0000
+
 dh-make-perl (0.86-1) unstable; urgency=medium
 
   * Quote left brace in regex. Gives warning under perl 5.22 (Closes: #788894)

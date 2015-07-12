@@ -1,3 +1,8 @@
+0.87 (2015-07-12)
+
+  * DpkgLists.t: add support for the new packaging layout in perl 5.22
+    (Closes: #789729 -- FTBFS with perl 5.22)
+
 0.86 (2015-06-16)
 
   * Quote left brace in regex. Gives warning under perl 5.22 (Closes: #788894)
