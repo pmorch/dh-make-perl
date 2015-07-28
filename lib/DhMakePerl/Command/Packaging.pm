@@ -408,7 +408,7 @@ sub extract_name_ver_from_build {
 		 (\S+)/xs
         )
     {
-        $name = $self->unquote($2);
+        $name = $self->unquote($3);
         $name =~ s/::/-/g;
 
         # just in case we need it later
