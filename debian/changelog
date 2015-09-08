@@ -1,4 +1,4 @@
-dh-make-perl (0.87-2) UNRELEASED; urgency=medium
+dh-make-perl (0.88-1) UNRELEASED; urgency=medium
 
   [ gregor herrmann ]
   * DhMakePerl::Command::Packaging: extract_name_ver_from_build(): take
