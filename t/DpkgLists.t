@@ -15,11 +15,14 @@ my $m = 'Debian::DpkgLists';
 my $perl_api = $Config{PERL_API_REVISION}.'.'.$Config{PERL_API_VERSION};
 
 my $arch = `dpkg-architecture -q DEB_HOST_ARCH`;
+chomp($arch);
 
 my $pkg_perl_modules = "perl-modules-$perl_api";
 my $pkg_libperl = "libperl$perl_api:$arch";
 
 my $split_perl_base = ( $perl_api ge '5.22' );
+
+diag "Perl API is $perl_api";
 
 is_deeply( [ $m->scan_full_path('/usr/bin/perl') ],
     ['perl-base'], '/usr/bin/perl is in perl-base' );
@@ -32,13 +35,13 @@ ok( grep( 'perl-base', @found ), 'qr{/bin/perl$} is in perl-base' );
 
 is_deeply(
     [ $m->scan_perl_mod('Errno') ],
-    $split_perl_base ? [$pkg_libperl] : ['perl-base'],
+    $split_perl_base ? [$pkg_libperl, 'perl-base'] : ['perl-base'],
     'Errno is in perl-base'
 );
 
 is_deeply(
     [ $m->scan_perl_mod('IO::Socket::UNIX') ],
-    $split_perl_base ? [$pkg_libperl] : ['perl-base'],
+    $split_perl_base ? [$pkg_libperl, 'perl-base'] : ['perl-base'],
     'IO::Socket::UNIX is in perl-base'
 );
 

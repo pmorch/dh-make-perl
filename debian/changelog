@@ -1,8 +1,15 @@
 dh-make-perl (0.87-2) UNRELEASED; urgency=medium
 
+  [ gregor herrmann ]
   * DhMakePerl::Command::Packaging: extract_name_ver_from_build(): take
     the correct parameter from the regex when parsing the name out of
     Build.PL.
+
+  [ Damyan Ivanov ]
+  * t/DpkgLists.t: remove trailing newline from `dpkg-archivecture` call
+    Fixes the test when perl is 5.22 or newer.
+    Really Closes: #789729 -- FTBFS with perl 5.22
+
 
  -- gregor herrmann <gregoa@debian.org>  Tue, 28 Jul 2015 18:19:41 +0200
 
