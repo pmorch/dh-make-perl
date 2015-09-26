@@ -7,8 +7,9 @@ my $builder = My::Builder->new(
     module_name         => 'DhMakePerl',
     license             => 'gpl',
     recommends          => {
-        'Git'     => 0,
-        'IO::Dir' => 0,
+        'DPKG::Parse' => 0.02,
+        'Git'         => 0,
+        'IO::Dir'     => 0,
     },
     configure_requires => { 'Module::Build' => 0.38 },
     requires            => {
