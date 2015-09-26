@@ -1,3 +1,11 @@
+dh-make-perl (0.89-1) unstable; urgency=medium
+
+  * Apply a patch from Andy Beverley for checking the versions of the locally
+    available packages when doing recursive builds (Closes: #774074)
+  * add libdpkg-parse-perl to Recommends
+
+ -- Damyan Ivanov <dmn@debian.org>  Sat, 26 Sep 2015 18:27:14 +0000
+
 dh-make-perl (0.88-1) unstable; urgency=medium
 
   [ gregor herrmann ]
@@ -9,7 +17,6 @@ dh-make-perl (0.88-1) unstable; urgency=medium
   * t/DpkgLists.t: remove trailing newline from `dpkg-archivecture` call
     Fixes the test when perl is 5.22 or newer.
     Really Closes: #789729 -- FTBFS with perl 5.22
-
 
  -- Damyan Ivanov <dmn@debian.org>  Tue, 08 Sep 2015 09:20:19 +0000
 

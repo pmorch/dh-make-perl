@@ -1,3 +1,8 @@
+0.89 (2015-09-26)
+
+  * Apply a patch from Andy Beverley for checking the versions of the locally
+    available packages when doing recursive builds (Closes: #774074)
+
 0.88 (2015-09-08)
 
   [ gregor herrmann ]
