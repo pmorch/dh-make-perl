@@ -1391,13 +1391,28 @@ sub discover_dependencies {
         # control->discover_dependencies needs configured CPAN
         $self->configure_cpan;
 
+        # Attempt to get an instance of DPKG::Parse::Available. If this
+        # isn't available, warn the user, as versions of packages cannot
+        # be checked.
+        # Don't cache this in case we've built and installed a
+        # module in this instance.
+        my $dpkg_available;
+        if ( eval { require DPKG::Parse::Available } && DPKG::Parse->VERSION >= 0.02 ) {
+            $dpkg_available = DPKG::Parse::Available->new;
+            $dpkg_available->parse;
+        } else {
+            warn "DPKG::Parse v0.02 or higher not found.";
+            warn "Versions of required packages will not be checked.";
+        }
+
         return $self->control->discover_dependencies(
-            {   dir          => $self->main_dir,
-                verbose      => $self->cfg->verbose,
-                apt_contents => $self->apt_contents,
-                require_deps => $self->cfg->requiredeps,
-                wnpp_query   => $wnpp_query,
-                intrusive    => $self->cfg->intrusive,
+            {   dir            => $self->main_dir,
+                verbose        => $self->cfg->verbose,
+                apt_contents   => $self->apt_contents,
+                dpkg_available => $dpkg_available,
+                require_deps   => $self->cfg->requiredeps,
+                wnpp_query     => $wnpp_query,
+                intrusive      => $self->cfg->intrusive,
             }
         );
     }
