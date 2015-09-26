@@ -1,3 +1,15 @@
+0.88 (2015-09-08)
+
+  [ gregor herrmann ]
+  * DhMakePerl::Command::Packaging: extract_name_ver_from_build(): take
+    the correct parameter from the regex when parsing the name out of
+    Build.PL.
+
+  [ Damyan Ivanov ]
+  * t/DpkgLists.t: remove trailing newline from `dpkg-archivecture` call
+    Fixes the test when perl is 5.22 or newer.
+    Really Closes: #789729 -- FTBFS with perl 5.22
+
 0.87 (2015-07-12)
 
   * DpkgLists.t: add support for the new packaging layout in perl 5.22
