@@ -1519,17 +1519,13 @@ sub discover_utility_deps {
 
     }
 
-    # there are old packages that still build-depend on libmodule-build-perl
-    # or perl (>= 5.10) | libmodule-build-perl.
-    # Since M::B is part of perl 5.10, the build-dependency needs correction
-    # and we replace this Build-Depends with simply perl, as lenny has the
-    # required version.
-    # Remove perl from Build-Depends-Indep as then perl will be already in
-    # Build-Depends.
+    # Ensure both libmodule-build-perl and perl are in B-D
+    # (and not in B-D-I).
     if ( $self->module_build eq 'Module-Build' ) {
-        $build_deps->remove('perl (>= 5.10) | libmodule-build-perl');
-        $build_deps->remove('libmodule-build-perl');
+        $build_deps_indep->remove('libmodule-build-perl');
         $build_deps_indep->remove('perl');
+        $self->explained_dependency( 'Module::Build', $build_deps,
+            'libmodule-build-perl' );
         $self->explained_dependency( 'Module::Build', $build_deps,
             'perl' );
     }
