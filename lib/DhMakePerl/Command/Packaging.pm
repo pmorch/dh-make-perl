@@ -1472,46 +1472,49 @@ includes first Module::Build.
 sub discover_utility_deps {
     my ( $self, $control ) = @_;
 
-    my $deps  = $control->source->Build_Depends;
+    my $build_deps        = $control->source->Build_Depends;
+    my $build_deps_indep  = $control->source->Build_Depends_Indep;
+    my $bin_deps          = $control->binary_tie->Values(0)->Depends;
+    my $architecture      = $control->binary_tie->Values(0)->Architecture;
 
     # remove any existing dependencies
-    $deps->remove( 'quilt', 'debhelper' );
+    $build_deps->remove( 'quilt', 'debhelper' );
 
     # start with the minimum
     my $debhelper_version = $self->cfg->dh;
 
-    if ( $control->binary_tie->Values(0)->Architecture eq 'all' ) {
-        $control->source->Build_Depends_Indep->add('perl');
+    if ( $architecture eq 'all' ) {
+        $build_deps_indep->add('perl');
     }
     else {
-        $deps->add('perl');
+        $build_deps->add('perl');
         $debhelper_version = '9.20120312~' if $debhelper_version eq '9';
     }
-    $deps->add( Debian::Dependency->new( 'debhelper', $debhelper_version ) );
+    $build_deps->add( Debian::Dependency->new( 'debhelper', $debhelper_version ) );
 
-    $self->explained_dependency( 'Module::Build::Tiny', $deps,
+    $self->explained_dependency( 'Module::Build::Tiny', $build_deps,
         'debhelper (>= 9.20140227~)' )
-        if $deps->has('libmodule-build-tiny-perl');
+        if $build_deps->has('libmodule-build-tiny-perl');
 
     for ( @{ $self->rules->lines } ) {
         $self->explained_dependency(
             'dh --with=quilt',
-            $deps, 'quilt',
+            $build_deps, 'quilt',
         ) if /dh\s+.*--with[= ]quilt/;
 
         $self->explained_dependency(
             'dh --with=bash-completion',
-            $deps,
+            $build_deps,
             'bash-completion'
         ) if (/dh\s+.*--with[= ]bash[-_]completion/);
 
         $self->explained_dependency(
             'dh --with=perl_dbi',
-            $deps,
+            $build_deps,
             'libdbi-perl'
         ) if (/dh\s+.*--with[= ]perl[-_]dbi/);
 
-        $self->explained_dependency( 'quilt.make', $deps, 'quilt' )
+        $self->explained_dependency( 'quilt.make', $build_deps, 'quilt' )
             if m{^include /usr/share/quilt/quilt.make};
 
     }
@@ -1524,17 +1527,15 @@ sub discover_utility_deps {
     # Remove perl from Build-Depends-Indep as then perl will be already in
     # Build-Depends.
     if ( $self->module_build eq 'Module-Build' ) {
-        $deps->remove('perl (>= 5.10) | libmodule-build-perl');
-        $deps->remove('libmodule-build-perl');
-        $control->source->Build_Depends_Indep->remove('perl');
-        $self->explained_dependency( 'Module::Build', $deps,
+        $build_deps->remove('perl (>= 5.10) | libmodule-build-perl');
+        $build_deps->remove('libmodule-build-perl');
+        $build_deps_indep->remove('perl');
+        $self->explained_dependency( 'Module::Build', $build_deps,
             'perl' );
     }
 
     # some mandatory dependencies
-    my $bin_deps = $control->binary_tie->Values(0)->Depends;
-    $bin_deps += '${shlibs:Depends}'
-        if $self->control->binary_tie->Values(0)->Architecture eq 'any';
+    $bin_deps += '${shlibs:Depends}' if $architecture eq 'any';
     $bin_deps += '${misc:Depends}, ${perl:Depends}';
 }
 
