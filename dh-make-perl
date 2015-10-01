@@ -273,9 +273,7 @@ Uses the argument to --desc as short description for the package.
 
 =item B<--dh> I<VERSION>
 
-Set desired debhelper compatibility level. The default is 8 for
-architecture-independent packages, and 9 for architecture-dependent packages
-(XS).
+Set desired debhelper compatibility level. The default is 9.
 
 Since version 0.77, B<dh-make-perl> only supports debhelper compatibility
 levels B<< >=8 >>.

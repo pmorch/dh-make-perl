@@ -280,8 +280,7 @@ sub extract_basic {
     }
 
     $self->cfg->dh('9')
-        if $bin->Architecture eq 'any'
-        and not $self->cfg->_explicitly_set->{dh};
+        if not $self->cfg->_explicitly_set->{dh};
 
     printf(
         "Found: %s %s (%s arch=%s)\n",
