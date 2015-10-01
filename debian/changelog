@@ -1,3 +1,16 @@
+dh-make-perl (0.90-1) UNRELEASED; urgency=medium
+
+  * Switch to debhelper 9 for dh-make-perl itself.
+  * Make sure we use at least debhelper 9 for created packages.
+    Update documentation.
+  * Update $VERSION.
+  * Update years of copyright.
+  * Change handling of Module::Build build dependency.
+    Module::Build is removed from perl core since 5.21.x, so we need
+    libmodule-build-perl in Build-Depends.
+
+ -- gregor herrmann <gregoa@debian.org>  Thu, 01 Oct 2015 23:42:59 +0200
+
 dh-make-perl (0.89-1) unstable; urgency=medium
 
   * Apply a patch from Andy Beverley for checking the versions of the locally
