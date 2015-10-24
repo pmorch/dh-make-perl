@@ -8,6 +8,8 @@ dh-make-perl (0.90-1) UNRELEASED; urgency=medium
   * Change handling of Module::Build build dependency.
     Module::Build is removed from perl core since 5.21.x, so we need
     libmodule-build-perl in Build-Depends.
+  * Rename autopkgtest configuration file(s) as per new pkg-perl-
+    autopkgtest schema.
 
  -- gregor herrmann <gregoa@debian.org>  Thu, 01 Oct 2015 23:42:59 +0200
 
