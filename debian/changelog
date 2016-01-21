@@ -10,6 +10,9 @@ dh-make-perl (0.90-1) UNRELEASED; urgency=medium
     libmodule-build-perl in Build-Depends.
   * Rename autopkgtest configuration file(s) as per new pkg-perl-
     autopkgtest schema.
+  * Add libmodule-build-perl to Recommends.
+    Module::Build was removed from perl core in 5.22 but is needed for some
+    CPAN distributions with --build (a.k.a. cpan2deb). (Closes: #811415)
 
  -- gregor herrmann <gregoa@debian.org>  Thu, 01 Oct 2015 23:42:59 +0200
 
