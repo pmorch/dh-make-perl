@@ -79,6 +79,7 @@ Depends: debhelper (>= 9),
 Recommends: apt-file (>= 2.5.0),
             git,
             libdpkg-parse-perl,
+            libmodule-build-perl,
             pristine-tar
 Description: helper for creating Debian packages from perl modules
  dh-make-perl will create the files required to build a Debian source
