@@ -1,5 +1,6 @@
 dh-make-perl (0.90-1) UNRELEASED; urgency=medium
 
+  [ gregor herrmann ]
   * Switch to debhelper 9 for dh-make-perl itself.
   * Make sure we use at least debhelper 9 for created packages.
     Update documentation.
@@ -13,6 +14,10 @@ dh-make-perl (0.90-1) UNRELEASED; urgency=medium
   * Add libmodule-build-perl to Recommends.
     Module::Build was removed from perl core in 5.22 but is needed for some
     CPAN distributions with --build (a.k.a. cpan2deb). (Closes: #811415)
+
+  [ Salvatore Bonaccorso ]
+  * When creating debian/control file use https transport in URI for Vcs-Git
+  * Update copyright years for debian/* packaging files
 
  -- gregor herrmann <gregoa@debian.org>  Thu, 01 Oct 2015 23:42:59 +0200
 
