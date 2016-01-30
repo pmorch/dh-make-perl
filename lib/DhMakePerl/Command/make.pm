@@ -190,7 +190,7 @@ sub execute {
         }
         elsif ( $vcs eq 'git' ) {
             $self->control->source->Vcs_Git(
-                sprintf( "git://anonscm.debian.org/pkg-perl/packages/%s.git",
+                sprintf( "https://anonscm.debian.org/git/pkg-perl/packages/%s.git",
                     $self->pkgname )
             );
             $self->control->source->Vcs_Browser(
