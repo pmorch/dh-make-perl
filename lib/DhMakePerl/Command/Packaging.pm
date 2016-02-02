@@ -45,7 +45,7 @@ use Text::Balanced qw(extract_quotelike);
 use Text::Wrap qw(fill);
 use User::pwent;
 
-use constant debstdversion => '3.9.6';
+use constant debstdversion => '3.9.7';
 
 our %DEFAULTS = (
 );
