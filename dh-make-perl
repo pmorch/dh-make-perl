@@ -306,6 +306,16 @@ dpkg-source's default values.
 Installs the freshly built package. Specifying --install implies --build - The
 package will not be installed unless it was built (obviously ;-) )
 
+=item B<--install-deps>
+
+Install all dependencies for the module, as long as those dependencies are
+available as Debian packages.
+
+=item B<--install-build-deps>
+
+Install dependencies required for building the module, as long as those dependencies
+are available as Debian packages.
+
 =item B<--intrusive>
 
 When determining module dependencies, if L<Module::Depends> fails, tries again

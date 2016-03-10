@@ -85,6 +85,16 @@ found.
 
 =cut
 
+sub _install_deb {
+    my ($deb, $verbose) = @_;
+    return if $deb eq 'libdbd-sqlite3-perl' || $deb eq 'libdbd-sqlite-perl';
+    my $inst_cmd = "apt-get -y install $deb";
+    $inst_cmd = "sudo $inst_cmd" if $>;
+    print "Running '$inst_cmd'..." if $verbose;
+    system($inst_cmd) == 0
+        || die "Cannot install package $deb\n";
+}
+
 sub discover_dependencies {
     my ( $self, $opts ) = @_;
 
@@ -97,6 +107,8 @@ sub discover_dependencies {
     my $intrusive = delete $opts->{intrusive};
     my $require_deps = delete $opts->{require_deps};
     my $verbose = delete $opts->{verbose};
+    my $install_deps = delete $opts->{install_deps};
+    my $install_build_deps = delete $opts->{install_build_deps};
     my $wnpp_query = delete $opts->{wnpp_query};
 
     die "Unsupported option(s) given: " . join( ', ', sort( keys(%$opts) ) )
@@ -187,6 +199,11 @@ sub discover_dependencies {
         else {
             $src->Build_Depends->add(@$debs);
         }
+        if ($install_deps) {
+            foreach my $deb (@$debs) {
+                _install_deb($deb->pkg) unless grep {$deb} @$missing;
+            }
+        }
     }
 
     # build-time
@@ -211,6 +228,10 @@ sub discover_dependencies {
         }
         else {
             $src->Build_Depends_Indep->add(@$b_debs);
+        }
+        if ($install_build_deps || $install_deps) {
+            _install_deb($_->pkg)
+                foreach @$b_debs;
         }
     }
 

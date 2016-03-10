@@ -29,6 +29,7 @@ my @OPTIONS = (
     'dist=s',          'email|e=s',
     'exclude|i:s{,}',
     'home-dir=s',      'install!',
+    'install-deps',     'install-build-deps',
     'intrusive!',
     'network!',
     'nometa',          'notest',

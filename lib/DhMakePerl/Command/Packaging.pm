@@ -1405,13 +1405,15 @@ sub discover_dependencies {
         }
 
         return $self->control->discover_dependencies(
-            {   dir            => $self->main_dir,
-                verbose        => $self->cfg->verbose,
-                apt_contents   => $self->apt_contents,
-                dpkg_available => $dpkg_available,
-                require_deps   => $self->cfg->requiredeps,
-                wnpp_query     => $wnpp_query,
-                intrusive      => $self->cfg->intrusive,
+            {   dir                => $self->main_dir,
+                verbose            => $self->cfg->verbose,
+                apt_contents       => $self->apt_contents,
+                dpkg_available     => $dpkg_available,
+                require_deps       => $self->cfg->requiredeps,
+                install_deps       => $self->cfg->install_deps,
+                install_build_deps => $self->cfg->install_build_deps,
+                wnpp_query         => $wnpp_query,
+                intrusive          => $self->cfg->intrusive,
             }
         );
     }
