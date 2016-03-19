@@ -23,6 +23,15 @@ dh-make-perl (0.90-1) UNRELEASED; urgency=medium
   * Use Standards-Version 3.9.7 in testsuite control files
   * Declare compliance with Debian Policy 3.9.7
 
+  [ Andy Beverley ]
+  * Add deb install options for dependencies.
+    This provides 2 new options: --install-build-deps and --install-deps,
+    which install just those packages required for building, and install all
+    related packages, respectively.
+
+  [ gregor herrmann ]
+  * Bump oldstable perl version from 5.10.1 to 5.14.2.
+
  -- gregor herrmann <gregoa@debian.org>  Thu, 01 Oct 2015 23:42:59 +0200
 
 dh-make-perl (0.89-1) unstable; urgency=medium
