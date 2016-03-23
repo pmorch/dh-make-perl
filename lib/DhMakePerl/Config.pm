@@ -15,7 +15,6 @@ use base 'Class::Accessor';
 use Dpkg::Source::Package;
 
 my @OPTIONS = (
-    'apt-contents-dir=s',
     'arch=s',          'backups!',
     'basepkgs=s',
     'bdepends=s',      'bdependsi=s',
@@ -36,7 +35,7 @@ my @OPTIONS = (
     'only|o=s@',
     'packagename|p=s', 'pkg-perl!',
     'recursive!',
-    'requiredeps',     'sources-list=s',
+    'requiredeps',
     'source-format=s', 'vcs=s',
     'verbose!',        'version=s',
 );

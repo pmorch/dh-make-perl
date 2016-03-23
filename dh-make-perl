@@ -151,11 +151,6 @@ Displays short usage information.
 
 =over
 
-=item B<--apt-contents-dir> I<dir>
-
-Location of L<apt-file> Contents directory. Default is
-F</var/cache/apt/apt-file>
-
 =item B<--arch> I<any> | I<all>
 
 This switches between arch-dependent and arch-independet packages. If B<--arch>
@@ -371,15 +366,6 @@ requires the apt-file package installed and updated)
 
 When creating or refreshing packaging, use the specified source format.
 Defaults to C<3.0 (quilt)>.
-
-=item B<--sources-list> I<FILE>
-
-Instruct the C<Contents> file parser to use this B<file> when determining if a
-given file should be parsed or not. Contents files not matching any line in
-B<sources.list> are not parsed in order to save you time parsing old files from
-mirrors you no longer use.
-
-Default: apt's default.
 
 =item B<--vcs> I<VCS>
 
