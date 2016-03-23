@@ -214,42 +214,38 @@ sub read_cache {
         $cache->{stamp}          = time;
         $cache->{contents_files} = [];
         $cache->{apt_contents}   = {};
-        for ( @{ $self->contents_files } ) {
-            push @{ $cache->{contents_files} }, $_;
-            my @cat_cmd = ( '/usr/lib/apt/apt-helper', 'cat-file', $_ );
-            open( my $f, "-|", @cat_cmd );
-            unless ($f) {
-                warn "Error reading '$_': $!\n";
-                next;
-            }
 
-            $self->warning( 1, "Parsing $_ ..." );
-            my $capturing = 0;
-            my $line;
-            while ( defined( $line = $f->getline ) ) {
-                if ($capturing) {
-                    my ( $file, $packages ) = split( /\s+/, $line );
-                    next unless $file =~ s{
-                        ^usr/
-                        (?:share|lib)/
-                        (?:perl\d+/             # perl5/
-                        | perl/(?:\d[\d.]+)/   # or perl/5.10/
-                        )
-                    }{}x;
-                    $cache->{apt_contents}{$file} = exists $cache->{apt_contents}{$file}
-                        ? $cache->{apt_contents}{$file}.','.$packages
-                        : $packages;
+        push @{ $cache->{contents_files} }, @{ $self->contents_files };
+        my @cat_cmd = (
+            '/usr/lib/apt/apt-helper', 'cat-file', @{ $self->contents_files }
+        );
+        open( my $f, "-|", @cat_cmd )
+            or die
+            "Can't run '/usr/lib/apt/apt-helper cat-file' on Contents files: $!\n";
 
-                    # $packages is a comma-separated list of
-                    # section/package items. We'll parse it when a file
-                    # matches. Otherwise we'd parse thousands of entries,
-                    # while checking only a couple
-                }
-                else {
-                    $capturing = 1 if $line =~ /^FILE\s+LOCATION/;
-                }
-            }
+        $self->warning( 1,
+            "Parsing Contents files:\n\t"
+                . join( "\n\t", @{ $self->contents_files } ) );
+        my $line;
+        while ( defined( $line = $f->getline ) ) {
+            my ( $file, $packages ) = split( /\s+/, $line );
+            next unless $file =~ s{
+                ^usr/
+                (?:share|lib)/
+                (?:perl\d+/            # perl5/
+                | perl/(?:\d[\d.]+)/   # or perl/5.10/
+                )
+            }{}x;
+            $cache->{apt_contents}{$file} = exists $cache->{apt_contents}{$file}
+                ? $cache->{apt_contents}{$file}.','.$packages
+                : $packages;
+
+            # $packages is a comma-separated list of
+            # section/package items. We'll parse it when a file
+            # matches. Otherwise we'd parse thousands of entries,
+            # while checking only a couple
         }
+        close($f);
 
         if ( %{ $cache->{apt_contents} } ) {
             $self->cache($cache);
