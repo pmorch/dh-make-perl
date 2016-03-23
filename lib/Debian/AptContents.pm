@@ -27,8 +27,8 @@ subclass Debian::AptContents, which needs to become more generic.
 use base qw(Class::Accessor);
 __PACKAGE__->mk_accessors(
     qw(
-        cache homedir cache_file contents_dir contents_files verbose
-        source sources dist
+        cache homedir cache_file contents_files verbose
+        source dist
         )
 );
 
@@ -64,16 +64,6 @@ Constructs new instance of the class. Expects at least C<homedir> option.
 
 (B<mandatory>) Directory where the object stores its cache.
 
-=item contents_dir
-
-Directory where L<apt-file> stores Contents files are stored. Default is
-F</var/cache/apt/apt-file>
-
-=item sources
-
-A path to a F<sources.list> file or an array ref of paths to sources.list
-files. If not given uses AptPkg's Config to get the list.
-
 =item dist
 
 Used for filtering on the C<distributon> part of the repository paths listed in
@@ -81,8 +71,7 @@ L<sources.list>. Default is empty, meaning no filtering.
 
 =item contents_files
 
-Arrayref of F<Contents> file names. Default is to parse the files in C<sources>
-and to look in C<contents_dir> for matching files.
+Arrayref of F<Contents> file names. Default is to let B<apt-filer> find them.
 
 =item cache_file
 
@@ -112,18 +101,6 @@ sub new {
         or die "No homedir given";
 
     # some defaults
-    $self->contents_dir('/var/cache/apt/apt-file')
-        unless $self->contents_dir;
-    $self->sources( [ $self->sources ] )
-        if $self->sources and not ref( $self->sources );
-    $self->sources(
-        [   $AptPkg::Config::_config->get_file('Dir::Etc::sourcelist'),
-            glob(
-                $AptPkg::Config::_config->get_dir('Dir::Etc::sourceparts')
-                    . '/*.list'
-            )
-        ]
-    ) unless defined( $self->sources );
     $self->contents_files( $self->get_contents_files )
         unless $self->contents_files;
     $self->cache_file( catfile( $self->homedir, 'Contents.cache' ) )
@@ -153,64 +130,6 @@ sub warning {
     warn "$msg\n" if $self->verbose >= $level;
 }
 
-=item repo_source_to_contents_paths
-
-Given a line with Debian package repository path (typically taken from
-F<sources.list>), converts it to the corresponding F<Contents> file names.
-
-=cut
-
-sub repo_source_to_contents_paths {
-    my ( $self, $source ) = @_;
-
-    # Weed out options in brackets first
-    $source =~ s/\[[^][]+\]//;
-
-    my ( $schema, $uri, $dist, @components ) = split /\s+/, $source;
-    my ( $proto, $host, $port, $dir ) = $uri =~ m{
-	^
-        (?:([^:/?\#]+):)?                      # proto
-        (?://
-                (?:[^:]+:[^@]+@)?              # username:password@
-                ([^:/?\#]*)                    # host
-                (?::(\d+))?                    # port
-        )?
-        ([^?\#]*)                              # path
-    }x;
-
-    unless ( defined $schema ) {
-        $self->warning( 1, "'$_' has unknown format" );
-        next;
-    }
-
-    return unless $schema eq 'deb';
-
-    if ( $self->dist ) {
-        if ( $self->dist =~ /^\s*{\s*(.+)\s*}\s*$/ ) {
-            return unless grep {/^$dist$/} split( /\s*,\s*/, $1 );
-        }
-        else {
-            return if $dist ne $self->dist;
-        }
-    }
-
-    $host ||= '';    # set empty string if $host is undef
-    $dir  ||= '';    # deb http://there sid main
-
-    s{/$}{}  for ( $host, $dir, $dist );    # remove trailing /
-    s{^/}{}  for ( $host, $dir, $dist );    # remove initial /
-    s{/}{_}g for ( $host, $dir, $dist );    # replace remaining /
-
-    # Make sure to generate paths both with and without components to
-    # be compatible with both old and new apt-file versions. See:
-    # https://bugs.launchpad.net/ubuntu/+source/dh-make-perl/+bug/1034881
-    push(@components, '');
-
-    return map
-        { $host . "_" . join( "_", grep( { defined and length } $dir, "dists", $dist, $_ ) ) }
-        @components;
-}
-
 =item get_contents_files
 
 Reads F<sources.list>, gives the repository paths to
@@ -227,34 +146,24 @@ sub get_contents_files {
 
     my @res;
 
-    for my $s ( @{ $self->sources } ) {
-        # by default ->sources contains a list of files that APT would look
-        # at. Some of them may not exist, so do not fail if this is the case
-        next unless -e $s;
-
-        my $src = IO::File->new( $s, 'r' )
-            or die "Unable to open '$s': $!\n";
-
-        while (<$src>) {
-            chomp;
-            s/#.*//;
-            s/^\s+//;
-            s/\s+$//;
-            next unless $_;
-
-            for my $path ( $self->repo_source_to_contents_paths($_) ) {
-                # try all of with/out architecture and
-                # un/compressed
-                for my $a ( '', "-$archspec" ) {
-                    for my $c ( '', '.gz' ) {
-                        my $f = catfile( $self->contents_dir,
-                            "${path}_Contents$a$c", );
-                        push @res, $f if -e $f;
-                    }
-                }
-            }
+    # stolen from apt-file, contents_file_paths()
+    my @cmd = (
+        'apt-get',  'indextargets',
+        '--format', '$(CREATED_BY) $(ARCHITECTURE) $(SUITE) $(FILENAME)'
+    );
+    open( my $fd, '-|', @cmd )
+        or die "Cannot execute apt-get indextargets: $!\n";
+    while ( my $line = <$fd> ) {
+        chomp($line);
+        next unless $line =~ m/^Contents-deb/;
+        my ( $index_name, $arch, $suite, $filename ) = split( ' ', $line, 4 );
+        next unless $arch eq $archspec;
+        if ( $self->dist ) {
+            next unless $suite eq $self->dist;
         }
+        push @res, $filename;
     }
+    close($fd);
 
     return [ uniq sort @res ];
 }
@@ -307,11 +216,8 @@ sub read_cache {
         $cache->{apt_contents}   = {};
         for ( @{ $self->contents_files } ) {
             push @{ $cache->{contents_files} }, $_;
-            my $f
-                = /\.gz$/
-                ? IO::Uncompress::Gunzip->new($_)
-                : IO::File->new( $_, 'r' );
-
+            my @cat_cmd = ( '/usr/lib/apt/apt-helper', 'cat-file', $_ );
+            open( my $f, "-|", @cat_cmd );
             unless ($f) {
                 warn "Error reading '$_': $!\n";
                 next;
