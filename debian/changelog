@@ -31,6 +31,9 @@ dh-make-perl (0.90-1) UNRELEASED; urgency=medium
 
   [ gregor herrmann ]
   * Bump oldstable perl version from 5.10.1 to 5.14.2.
+  * Update documentation for the --bdepends, --bdependsi, --depends
+    options. They add (build) dependencies to the automatically found
+    packages since 0.49. (Cf. #813766)
 
  -- gregor herrmann <gregoa@debian.org>  Thu, 01 Oct 2015 23:42:59 +0200
 
