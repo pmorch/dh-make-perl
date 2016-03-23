@@ -71,7 +71,7 @@ L<sources.list>. Default is empty, meaning no filtering.
 
 =item contents_files
 
-Arrayref of F<Contents> file names. Default is to let B<apt-filer> find them.
+Arrayref of F<Contents> file names. Default is to let B<apt-file> find them.
 
 =item cache_file
 
