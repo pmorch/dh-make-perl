@@ -410,6 +410,8 @@ sub find_perl_module_package {
 
 =item Damyan Ivanov <dmn@debian.org>
 
+=item gregor herrmann <gregoa@debian.org>
+
 =back
 
 =head1 COPYRIGHT & LICENSE
@@ -417,6 +419,8 @@ sub find_perl_module_package {
 =over 4
 
 =item Copyright (C) 2008, 2009, 2010 Damyan Ivanov <dmn@debian.org>
+
+=item Copyright (C) 2016, gregor herrmann <gregoa@debian.org>
 
 =back
 
