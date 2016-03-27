@@ -76,7 +76,7 @@ Depends: debhelper (>= 9),
          perl (>= 5.13.10) | libcpan-meta-perl,
          ${misc:Depends},
          ${perl:Depends}
-Recommends: apt-file (>= 2.5.0),
+Recommends: apt-file (>= 3),
             git,
             libdpkg-parse-perl,
             libmodule-build-perl,
