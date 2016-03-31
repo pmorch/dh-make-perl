@@ -41,7 +41,7 @@ dh-make-perl (0.90-1) UNRELEASED; urgency=medium
     - drop --apt-contents-dir and --sources-list command line options
     - update tests accordingly, including a fake apt-get to point to the test
       Contents files
-    - bump versioned Recommends on apt-file to 3
+    - bump versioned Recommends on apt-file to 3 and add apt (>= 1.1.8)
     Thanks to Niels Thykier for his help.
     Closes: #815190
 
