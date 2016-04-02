@@ -45,6 +45,10 @@ dh-make-perl (0.90-1) UNRELEASED; urgency=medium
     Thanks to Niels Thykier for his help.
     Closes: #815190
 
+  [ Sean Whitton ]
+  * Add Built-Using: to recognised binary package stanza fields
+    (Closes: #819701)
+
  -- gregor herrmann <gregoa@debian.org>  Thu, 01 Oct 2015 23:42:59 +0200
 
 dh-make-perl (0.89-1) unstable; urgency=medium
