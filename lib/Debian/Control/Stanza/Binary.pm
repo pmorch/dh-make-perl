@@ -93,7 +93,7 @@ use base 'Debian::Control::Stanza';
 
 use constant fields => qw(
     Package Architecture Section Priority Essential Depends Recommends Suggests
-    Enhances Replaces Pre_Depends Conflicts Breaks Provides Description
+    Enhances Replaces Pre_Depends Conflicts Breaks Provides Built_Using Description
     _short_description _long_description
 );
 
