@@ -77,7 +77,7 @@ package Debian::Control::Stanza::Source;
 use strict;
 use warnings;
 
-our $VERSION = '0.73';
+our $VERSION = '0.90';
 
 use base qw(Debian::Control::Stanza);
 

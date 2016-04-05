@@ -16,7 +16,7 @@ package Debian::Control::FromCPAN;
 use strict;
 use warnings;
 
-our $VERSION = '0.77';
+our $VERSION = '0.90';
 
 use Carp qw(croak);
 

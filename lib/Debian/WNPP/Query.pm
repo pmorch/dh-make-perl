@@ -2,7 +2,7 @@ package Debian::WNPP::Query;
 use strict;
 use warnings;
 
-our $VERSION = '0.74';
+our $VERSION = '0.90';
 
 =head1 NAME
 
