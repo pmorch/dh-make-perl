@@ -1,6 +1,53 @@
-0.90 (2015-xx-xx)
+0.90 (2016-04-05)
 
-  * -
+  [ gregor herrmann ]
+  * Switch to debhelper 9 for dh-make-perl itself.
+  * Make sure we use at least debhelper 9 for created packages.
+    Update documentation.
+  * Update $VERSION.
+  * Update years of copyright.
+  * Change handling of Module::Build build dependency.
+    Module::Build is removed from perl core since 5.21.x, so we need
+    libmodule-build-perl in Build-Depends.
+  * Rename autopkgtest configuration file(s) as per new pkg-perl-
+    autopkgtest schema.
+  * Add libmodule-build-perl to Recommends.
+    Module::Build was removed from perl core in 5.22 but is needed for some
+    CPAN distributions with --build (a.k.a. cpan2deb). (Closes: #811415)
+
+  [ Salvatore Bonaccorso ]
+  * When creating debian/control file use https transport in URI for Vcs-Git
+  * Update copyright years for debian/* packaging files
+  * debian/control: Use HTTPS transport protocol for Vcs-Git URI
+  * Create packages using Standards-Version 3.9.7
+  * Use Standards-Version 3.9.7 in testsuite control files
+  * Declare compliance with Debian Policy 3.9.7
+
+  [ Andy Beverley ]
+  * Add deb install options for dependencies.
+    This provides 2 new options: --install-build-deps and --install-deps,
+    which install just those packages required for building, and install all
+    related packages, respectively.
+
+  [ gregor herrmann ]
+  * Bump oldstable perl version from 5.10.1 to 5.14.2.
+  * Update documentation for the --bdepends, --bdependsi, --depends
+    options. They add (build) dependencies to the automatically found
+    packages since 0.49. (Cf. #813766)
+  * Adjust to apt-file 3, which dropped its own cache of Contents files in
+    favour of APT's cache.
+    - use `apt-get indextargets' and `/usr/lib/apt/apt-helper cat-file' to
+      find/read the Contents files
+    - drop --apt-contents-dir and --sources-list command line options
+    - update tests accordingly, including a fake apt-get to point to the test
+      Contents files
+    - bump versioned Recommends on apt-file to 3 and add apt (>= 1.1.8)
+    Thanks to Niels Thykier for his help.
+    Closes: #815190
+
+  [ Sean Whitton ]
+  * Add Built-Using: to recognised binary package stanza fields
+    (Closes: #819701)
 
 0.89 (2015-09-26)
 
