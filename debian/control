@@ -44,6 +44,9 @@ Build-Depends-Indep: libapt-pkg-perl,
                      libwww-mechanize-perl,
                      libyaml-perl,
                      perl (>= 5.13.10) | libcpan-meta-perl
+# for RELEASE_TESTING
+#                     , libtest-perl-critic-perl
+#                     , libtest-version-perl
 Standards-Version: 3.9.7
 Vcs-Browser: https://anonscm.debian.org/cgit/pkg-perl/packages/dh-make-perl.git
 Vcs-Git: https://anonscm.debian.org/git/pkg-perl/packages/dh-make-perl.git
