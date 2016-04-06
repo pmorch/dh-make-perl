@@ -49,6 +49,11 @@ dh-make-perl (0.90-1) UNRELEASED; urgency=medium
   * Add Built-Using: to recognised binary package stanza fields
     (Closes: #819701)
 
+  [ Salvatore Bonaccorso ]
+  * Create packages using Standards-Version 3.9.8
+  * Use Standards-Version 3.9.8 in testsuite control files
+  * Declare compliance with Debian policy 3.9.8
+
  -- gregor herrmann <gregoa@debian.org>  Thu, 01 Oct 2015 23:42:59 +0200
 
 dh-make-perl (0.89-1) unstable; urgency=medium
