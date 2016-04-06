@@ -1,6 +1,12 @@
-dh-make-perl (0.91-1) UNRELEASED; urgency=medium
+dh-make-perl (0.91) UNRELEASED; urgency=medium
 
-  * <dummy entry>
+  * debian/source/format: switch to '3.0 (native)'.
+    Cf. the thread at https://lists.debian.org/debian-perl/2016/03/msg00038.html
+    for the history and pros/cons of having a non-native vs. a native package.
+  * Drop debian/{watch,upstream-signing-key.pgp,source/include-binaries}.
+    Not needed for a native package.
+  * Add a lintian override for latest-debian-changelog-entry-changed-to-
+    native.
 
  -- gregor herrmann <gregoa@debian.org>  Wed, 06 Apr 2016 17:35:59 +0200
 
