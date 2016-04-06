@@ -33,6 +33,9 @@ Some parts are still of interest.
     sed -i -e 's/$ver/$ver+1/' file...
     git ci -a -m'increment version to $ver+1'
 
+    example for a one-liner:
+    git grep 'our $VERSION' | cut -f1 -d: | uniq | xargs perl -pi -e "s{(our.+VERSION) = '0.\d\d';}{\$1 = '0.91';}g"
+
 * push
     dpt push
 
