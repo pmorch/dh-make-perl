@@ -1,4 +1,4 @@
-dh-make-perl (0.90-1) UNRELEASED; urgency=medium
+dh-make-perl (0.90-1) unstable; urgency=medium
 
   [ gregor herrmann ]
   * Switch to debhelper 9 for dh-make-perl itself.
@@ -54,7 +54,7 @@ dh-make-perl (0.90-1) UNRELEASED; urgency=medium
   * Use Standards-Version 3.9.8 in testsuite control files
   * Declare compliance with Debian policy 3.9.8
 
- -- gregor herrmann <gregoa@debian.org>  Thu, 01 Oct 2015 23:42:59 +0200
+ -- gregor herrmann <gregoa@debian.org>  Wed, 06 Apr 2016 17:20:35 +0200
 
 dh-make-perl (0.89-1) unstable; urgency=medium
 
