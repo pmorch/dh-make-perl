@@ -1,3 +1,8 @@
+NOTE: most of the steps here refer to Alioth and CPAN, i.e. to the time,
+when dh-make-perl was a non-native package (0.66 - 0.90).
+Some parts are still of interest.
+
+
 * run
     make orig
   this will create ../dh-make-perl_$VERSION.orig.tar.gz and
