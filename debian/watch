@@ -1,4 +1,0 @@
-version=2
-opts=pgpsigurlmangle=s/$/.asc/ \
-https://alioth.debian.org/frs/?group_id=30274 \
-    .+/dh-make-perl_([\d.]+)\.orig\.tar\.gz
