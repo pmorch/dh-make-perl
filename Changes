@@ -1,4 +1,4 @@
-0.90 (2016-04-05)
+0.90 (2016-04-06)
 
   [ gregor herrmann ]
   * Switch to debhelper 9 for dh-make-perl itself.
@@ -48,6 +48,11 @@
   [ Sean Whitton ]
   * Add Built-Using: to recognised binary package stanza fields
     (Closes: #819701)
+
+  [ Salvatore Bonaccorso ]
+  * Create packages using Standards-Version 3.9.8
+  * Use Standards-Version 3.9.8 in testsuite control files
+  * Declare compliance with Debian policy 3.9.8
 
 0.89 (2015-09-26)
 
