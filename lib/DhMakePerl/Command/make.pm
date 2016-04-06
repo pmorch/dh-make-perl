@@ -2,7 +2,7 @@ package DhMakePerl::Command::make;
 
 use warnings;
 use strict;
-our $VERSION = '0.90';
+our $VERSION = '0.91';
 use 5.010;    # we use smart matching
 
 use base 'DhMakePerl::Command::Packaging';

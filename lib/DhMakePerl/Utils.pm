@@ -3,7 +3,7 @@ package DhMakePerl::Utils;
 use strict;
 use warnings;
 
-our $VERSION = '0.90';
+our $VERSION = '0.91';
 
 =head1 NAME
 

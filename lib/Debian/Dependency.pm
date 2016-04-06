@@ -3,7 +3,7 @@ package Debian::Dependency;
 use strict;
 use warnings;
 
-our $VERSION = '0.90';
+our $VERSION = '0.91';
 
 use AptPkg::Config;
 use Carp;

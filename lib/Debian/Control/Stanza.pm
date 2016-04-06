@@ -25,7 +25,7 @@ require v5.10.0;
 use strict;
 use warnings;
 
-our $VERSION = '0.90';
+our $VERSION = '0.91';
 
 use base qw( Class::Accessor Tie::IxHash );
 
