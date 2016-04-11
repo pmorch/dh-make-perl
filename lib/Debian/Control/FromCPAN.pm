@@ -363,12 +363,10 @@ sub find_debs_for_modules {
                 if ( my $available = $pkg->{VersionList} ) {
                     for my $v ( @$available ) {
                         my $d = Debian::Dependency->new( $dep->pkg, '=', $v->{VerStr} );
-                        unless ( $d->satisfies($dep) )
-                        {
-                            push @missing, $module;
-                            print "$module package in APT ($d) does not satisfy $dep"
-                                if $verbose;
-                        }
+                        last if $d->satisfies($dep); # exit loop if we have a good version; otherwise:
+                        push @missing, $module;
+                        print "$module package in APT ($d) does not satisfy $dep"
+                            if $verbose;
                     }
                 }
             }
