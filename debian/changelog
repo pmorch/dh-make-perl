@@ -7,6 +7,18 @@ dh-make-perl (0.91) UNRELEASED; urgency=medium
     Not needed for a native package.
   * Add a lintian override for latest-debian-changelog-entry-changed-to-
     native.
+  * Debian::Control::FromCPAN: find_debs_for_modules(): exit version loop.
+    When searching for versioned dependency, the method issues the warning
+    "$module package in APT ($d) does not satisfy $dep" even when higher
+    versions are available. Exit the loop as soon as we have a high enough
+    version.
+  * Issue a warning in build_package if local::lib usage is detected.
+    local::lib sets the installation path (by default to $HOME/perl5) via
+    PERL_MB_OPT/PERL_MM_OPT which is not what we want in the built
+    package. Messing with the environment is a bit too brittle, so we
+    issue a fat warning and give recommendations for deactivating the
+    local::lib environment temporarily.
+    Thanks to Jacob L Anawalt for the bug report. (Closes: #820395)
 
  -- gregor herrmann <gregoa@debian.org>  Wed, 06 Apr 2016 17:35:59 +0200
 
