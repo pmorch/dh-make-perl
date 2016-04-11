@@ -400,6 +400,15 @@ sub build_package {
     my ( $self ) = @_;
 
     my $main_dir = $self->main_dir;
+    # warn if local::lib usage is detected. cf. #820395
+    if ( $ENV{PERL_LOCAL_LIB_ROOT} ) {
+        $self->warning('It seems that you are running in an active local::lib environment.');
+        $self->warning('local::lib usually sets PERL_MB_OPT=--install_base and PERL_MM_OPT=INSTALL_BASE');
+        $self->warning('which will change the install path in the about to be built package.');
+        $self->warning('We recommend that you disable local::lib temporarily, e.g. by running');
+        $self->warning('    eval $(perl -Mlocal::lib=--deactivate-all)');
+        $self->warning('in your shell. -- Continuing anyway ...');
+    }
     # uhmf! dpkg-genchanges doesn't cope with the deb being in another dir..
     #system("dpkg-buildpackage -b -us -uc " . $self->cfg->dbflags) == 0
     system("fakeroot make -C $main_dir -f debian/rules clean");
