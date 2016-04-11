@@ -343,7 +343,7 @@ sub find_debs_for_modules {
                     }
                 } @pkgs;
                 unless ( @satisfied ) {
-                    print "$module is available locally as @available, but does not satisify $version"
+                    print "$module is available locally as @available, but does not satisfy $version"
                         if $verbose;
                     push @missing, $module;
                 }
