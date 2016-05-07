@@ -22,6 +22,10 @@ dh-make-perl (0.91) UNRELEASED; urgency=medium
     Thanks to Jacob L Anawalt for the bug report. (Closes: #820395)
   * debian/copyright: change Copyright-Format 1.0 URL to HTTPS.
 
+  [ Sean Whitton ]
+  * Strip comments when reading control files.  (Closes: #823708)
+    Otherwise, control files containing comments cause a parse failure.
+
   [ Salvatore Bonaccorso ]
   * Use HTTPS transport protocol for Format URI in copyright file.
     Refresh or create new copyright files using HTTPS transport protocol for

@@ -115,7 +115,7 @@ sub read {
     }
 
     my $stanzas = $self->_parser->$parser_method( $file,
-        { useTieIxHash => 1, verbMultiLine => 1 } );
+        { useTieIxHash => 1, verbMultiLine => 1, stripComments => 1 } );
 
     for (@$stanzas) {
         if ( $_->{Source} ) {
