@@ -27,6 +27,7 @@ dh-make-perl (0.91) UNRELEASED; urgency=medium
     the Format URI to the copyright format specification.
     Adjust tests to use HTTPS transport protocol as well in the Format
     fields.
+  * Use HTTPS transport protocol for various URLs in POD
 
  -- gregor herrmann <gregoa@debian.org>  Wed, 06 Apr 2016 17:35:59 +0200
 
