@@ -120,12 +120,15 @@ sub find_cpan_distribution {
 Returns the version of the C<perl> package containing the given I<module> (at
 least version I<version>).
 
-Returns C<undef> if I<module> is not a core module.
+Returns C<undef> if I<module> is not a core module (anymore) in the current
+C<perl> release.
 
 =cut
 
 sub is_core_module {
     my ( $module, $ver ) = @_;
+
+    return unless Module::CoreList->is_core($module, $ver);   # currently in core?
 
     my $v = Module::CoreList->first_release($module, $ver);   # 5.009002
 
@@ -205,7 +208,8 @@ sub core_module_perls {
 =item find_core_perl_dependency( $module[, $version] )
 
 return a dependency on perl containing the required module version. If the
-module is not available in any perl released by Debian, return undef.
+module is not available in any perl released by Debian, , or if it is not in
+the current perl anymore, return undef.
 
 =cut
 
@@ -228,6 +232,8 @@ sub find_core_perl_dependency {
 
         return Debian::Dependency->new( 'perl', nice_perl_ver($version) );
     }
+
+    return undef unless is_core_module($module, $version);   # currently in core?
 
     my $perl_dep;
 
