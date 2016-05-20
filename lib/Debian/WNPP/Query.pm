@@ -192,7 +192,7 @@ sub bugs_for_package {
 
 =item L<Debian::WNPP::Bug>
 
-=item L<http://www.debian.org/devel/wnpp/>
+=item L<https://www.debian.org/devel/wnpp/>
 
 =back
 

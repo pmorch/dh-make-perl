@@ -340,7 +340,7 @@ name.
 =item B<--pkg-perl>
 
 Useful when preparing a package for the Debian Perl Group
-L<http://pkg-perl.alioth.debian.org>.
+L<https://pkg-perl.alioth.debian.org>.
 
 Sets C<Maintainer>, C<Uploaders>, C<Vcs-Git> and C<Vcs-Browser> fields in
 F<debian/control> accordingly. Also, when C<--vcs git> is used (the default),
@@ -451,7 +451,7 @@ Maintained for a time by Marc Brockschmdit E<lt>marc@dch-faq.deE<gt>.
 
 Maintained for a time by Gunnar Wolf E<lt>gwolf@gwolf.orgE<gt>.
 
-Now team-maintained by the Debian Perl Group, http://alioth.debian.org/projects/pkg-perl.
+Now team-maintained by the Debian Perl Group, https://alioth.debian.org/projects/pkg-perl.
 
 Patches from:
 

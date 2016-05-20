@@ -850,7 +850,7 @@ Debian Perl Group <debian-perl@lists.debian.org>
 =head1 BUGS
 
 Please report any bugs or feature requests to the Debian Bug Tracking System
-(L<http://bugs.debian.org/>, use I<dh-make-perl> as package name) or to the
+(L<https://bugs.debian.org/>, use I<dh-make-perl> as package name) or to the
 L<debian-perl@lists.debian.org> mailing list.
 
 =head1 SUPPORT
@@ -865,7 +865,7 @@ You can also look for information at:
 
 =item * Debian Bugtracking System
 
-L<http://bugs.debian.org/dh-make-perl>
+L<https://bugs.debian.org/dh-make-perl>
 
 =back
 
