@@ -948,7 +948,7 @@ sub create_copyright {
     $cprt_author =~ s/\n/\n    /gs;
     $cprt_author =~ s/^\s*$/    ./gm;
 
-    push @res, 'Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/';
+    push @res, 'Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/';
 
     # Header section
     %fields = (
