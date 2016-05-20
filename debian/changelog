@@ -20,6 +20,7 @@ dh-make-perl (0.91) UNRELEASED; urgency=medium
     issue a fat warning and give recommendations for deactivating the
     local::lib environment temporarily.
     Thanks to Jacob L Anawalt for the bug report. (Closes: #820395)
+  * debian/copyright: change Copyright-Format 1.0 URL to HTTPS.
 
   [ Salvatore Bonaccorso ]
   * Use HTTPS transport protocol for Format URI in copyright file.
