@@ -21,6 +21,13 @@ dh-make-perl (0.91) UNRELEASED; urgency=medium
     local::lib environment temporarily.
     Thanks to Jacob L Anawalt for the bug report. (Closes: #820395)
   * debian/copyright: change Copyright-Format 1.0 URL to HTTPS.
+  * DhMakePerl::Utils: when checking for core modules, look at current
+    perl.
+    Various helpers which check if a module is in Perl core or starting from
+    which version only looked at the first Perl version. This ignored cases
+    where a package was removed from core at some point.
+    Change those methods to return if a module is not currently in Perl core.
+    Thanks to Peter Valdemar Mørch for the bug report. (Closes: #788198)
 
   [ Sean Whitton ]
   * Strip comments when reading control files.  (Closes: #823708)
