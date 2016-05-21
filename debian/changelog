@@ -28,6 +28,9 @@ dh-make-perl (0.91) UNRELEASED; urgency=medium
     where a package was removed from core at some point.
     Change those methods to return if a module is not currently in Perl core.
     Thanks to Peter Valdemar Mørch for the bug report. (Closes: #788198)
+  * DhMakePerl::Command::Packaging: don't enforce 9.20120312~ for
+    debhelper in arch:any packages anymore. There is no older version in
+    the archive anymore.
 
   [ Sean Whitton ]
   * Strip comments when reading control files.  (Closes: #823708)
