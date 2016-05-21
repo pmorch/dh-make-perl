@@ -1490,7 +1490,6 @@ sub discover_utility_deps {
     }
     else {
         $build_deps->add('perl');
-        $debhelper_version = '9.20120312~' if $debhelper_version eq '9';
     }
     $build_deps->add( Debian::Dependency->new( 'debhelper', $debhelper_version ) );
 
