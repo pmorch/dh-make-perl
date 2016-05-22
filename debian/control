@@ -62,6 +62,7 @@ Depends: debhelper (>= 9),
          libclass-accessor-perl,
          libconfig-ini-perl,
          libdpkg-perl,
+         libdebian-control-perl,
          libemail-address-perl,
          libemail-date-format-perl,
          libfile-which-perl,
@@ -97,3 +98,32 @@ Description: helper for creating Debian packages from perl modules
  Perl module packages.
  .
  Includes the cpan2deb and cpan2dsc flavours.
+
+Package: libdebian-control-perl
+Architecture: all
+Depends: ${misc:Depends},
+         ${perl:Depends},
+         dpkg-dev,
+         libapt-pkg-perl,
+         libarray-unique-perl,
+         libclass-accessor-perl,
+         liblist-moreutils-perl,
+         libparse-debcontrol-perl,
+         libtie-ixhash-perl,
+         libwww-mechanize-perl
+Breaks: dh-make-perl (<< 0.91)
+Replaces: dh-make-perl (<< 0.91)
+Description: collection of Perl modules for handling Debian source packages
+ <long description goes here>
+ .
+  * Debian::Control
+  * Debian::Control::Stanza
+  * Debian::Control::Stanza::Binary
+  * Debian::Control::Stanza::CommaSeparated
+  * Debian::Control::Stanza::Source
+  * Debian::Dependencies
+  * Debian::Dependency
+  * Debian::DpkgLists
+  * Debian::Rules
+  * Debian::WNPP::Bug
+  * Debian::WNPP::Query
