@@ -1010,6 +1010,7 @@ sub create_copyright {
                 { holder => 'noname', } );
             my $text = $artistic2->license;
             $text =~ s/\n$//s;
+            $text =~ s/[ \t]+$//mg;
             $text =~ s/^\n/.\n/mg;
             $text =~ s/^/ /mg;
             $text;
