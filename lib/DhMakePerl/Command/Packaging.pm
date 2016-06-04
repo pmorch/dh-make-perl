@@ -966,11 +966,11 @@ sub create_copyright {
         }
     }
     push( @res,
-        "DISCLAIMER: This copyright info was automatically extracted ",
-        " from the perl module. It may not be accurate, so you better ",
-        " check the module sources in order to ensure the module for its ",
-        " inclusion in Debian or for general legal information. Please, ",
-        " if licensing information is incorrectly generated, file a bug ",
+        "DISCLAIMER: This copyright info was automatically extracted",
+        " from the perl module. It may not be accurate, so you better",
+        " check the module sources in order to ensure the module for its",
+        " inclusion in Debian or for general legal information. Please,",
+        " if licensing information is incorrectly generated, file a bug",
         " on dh-make-perl.",
         " NOTE: Don't forget to remove this disclaimer once you are happy",
         " with this file." );
@@ -1010,6 +1010,7 @@ sub create_copyright {
                 { holder => 'noname', } );
             my $text = $artistic2->license;
             $text =~ s/\n$//s;
+            $text =~ s/[ \t]+$//mg;
             $text =~ s/^\n/.\n/mg;
             $text =~ s/^/ /mg;
             $text;
@@ -1668,15 +1669,17 @@ sub _file_w {
 
 =item Copyright (C) 2006 Frank Lichtenheld <djpig@debian.org>
 
-=item Copyright (C) 2007-2015 Gregor Herrmann <gregoa@debian.org>
+=item Copyright (C) 2007-2015 gregor herrmann <gregoa@debian.org>
 
-=item Copyright (C) 2007,2008,2009,2010,2012,2013 Damyan Ivanov <dmn@debian.org>
+=item Copyright (C) 2007-2013 Damyan Ivanov <dmn@debian.org>
 
 =item Copyright (C) 2008, Roberto C. Sanchez <roberto@connexer.com>
 
 =item Copyright (C) 2009-2011, Salvatore Bonaccorso <carnil@debian.org>
 
 =item Copyright (C) 2011, Nicholas Bamber <nicholas@periapt.co.uk>
+
+=item Copyright (c) 2016, Nick Morrott <knowledgejunkie@gmail.com>
 
 =back
 

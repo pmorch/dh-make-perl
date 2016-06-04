@@ -44,6 +44,14 @@ dh-make-perl (0.91) UNRELEASED; urgency=medium
     fields.
   * Use HTTPS transport protocol for various URLs in POD
 
+  [ Nick Morrott ]
+  * DhMakePerl::Command::Packaging:
+    - remove trailing whitespace from Artistic 2.0 license text
+    - remove trailing whitespace from copyright DISCLAIMER text
+
+  [ gregor herrmann ]
+  * Update copyright holder list for DhMakePerl::Command::Packaging.
+
  -- gregor herrmann <gregoa@debian.org>  Wed, 06 Apr 2016 17:35:59 +0200
 
 dh-make-perl (0.90-1) unstable; urgency=medium
