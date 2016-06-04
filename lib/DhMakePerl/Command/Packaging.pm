@@ -966,11 +966,11 @@ sub create_copyright {
         }
     }
     push( @res,
-        "DISCLAIMER: This copyright info was automatically extracted ",
-        " from the perl module. It may not be accurate, so you better ",
-        " check the module sources in order to ensure the module for its ",
-        " inclusion in Debian or for general legal information. Please, ",
-        " if licensing information is incorrectly generated, file a bug ",
+        "DISCLAIMER: This copyright info was automatically extracted",
+        " from the perl module. It may not be accurate, so you better",
+        " check the module sources in order to ensure the module for its",
+        " inclusion in Debian or for general legal information. Please,",
+        " if licensing information is incorrectly generated, file a bug",
         " on dh-make-perl.",
         " NOTE: Don't forget to remove this disclaimer once you are happy",
         " with this file." );
