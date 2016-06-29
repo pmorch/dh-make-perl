@@ -114,7 +114,10 @@ Depends: ${misc:Depends},
 Breaks: dh-make-perl (<< 0.91)
 Replaces: dh-make-perl (<< 0.91)
 Description: collection of Perl modules for handling Debian source packages
- <long description goes here>
+ This collection of Perl modules was originally developed to support
+ dh-make-perl, but may also be useful for other tools that need to
+ manipulate (unpacked) Debian source packages.  The current modules in
+ the package are:
  .
   * Debian::Control
   * Debian::Control::Stanza
