@@ -38,6 +38,8 @@ my $builder = My::Builder->new(
         'IO::File'                  => 0,
         'IO::Uncompress::Gunzip'    => 0,
         'List::MoreUtils'           => 0,
+        'LWP::ConnCache'            => 0,
+        'LWP::UserAgent'            => 0,
         'Module::Build'             => 0,
         'Module::CoreList'          => 0,
         'Module::Depends'           => 0,
@@ -54,6 +56,7 @@ my $builder = My::Builder->new(
         'version'                   => 0,
         'WWW::Mechanize'            => 0,
         'YAML'                      => 0,
+        'YAML::XS'                  => 0,
     },
     build_requires      => {
         'IPC::Run'          => 0,
