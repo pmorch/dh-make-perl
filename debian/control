@@ -99,7 +99,7 @@ Description: helper for creating Debian packages from perl modules
  .
  Includes the cpan2deb and cpan2dsc flavours.
 
-Package: libdebian-control-perl
+Package: libdebian-source-perl
 Architecture: all
 Depends: ${misc:Depends},
          ${perl:Depends},
