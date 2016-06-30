@@ -51,6 +51,10 @@ dh-make-perl (0.91) UNRELEASED; urgency=medium
 
   [ gregor herrmann ]
   * Update copyright holder list for DhMakePerl::Command::Packaging.
+  * Split package into dh-make-perl and libdebian-source-perl.
+    The latter contains generally useful Perl modules.
+    Thanks to Sean Whitton for the bug report.
+    (Closes: #823067)
 
  -- gregor herrmann <gregoa@debian.org>  Wed, 06 Apr 2016 17:35:59 +0200
 
