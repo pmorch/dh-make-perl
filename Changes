@@ -1,6 +1,60 @@
-0.91 (2016-xx-xx)
+0.91 (2016-07-02)
 
-  * -
+  [ gregor herrmann ]
+  * debian/source/format: switch to '3.0 (native)'.
+    Cf. the thread at https://lists.debian.org/debian-perl/2016/03/msg00038.html
+    for the history and pros/cons of having a non-native vs. a native package.
+  * Drop debian/{watch,upstream-signing-key.pgp,source/include-binaries}.
+    Not needed for a native package.
+  * Add a lintian override for latest-debian-changelog-entry-changed-to-
+    native.
+  * Debian::Control::FromCPAN: find_debs_for_modules(): exit version loop.
+    When searching for versioned dependency, the method issues the warning
+    "$module package in APT ($d) does not satisfy $dep" even when higher
+    versions are available. Exit the loop as soon as we have a high enough
+    version.
+  * Issue a warning in build_package if local::lib usage is detected.
+    local::lib sets the installation path (by default to $HOME/perl5) via
+    PERL_MB_OPT/PERL_MM_OPT which is not what we want in the built
+    package. Messing with the environment is a bit too brittle, so we
+    issue a fat warning and give recommendations for deactivating the
+    local::lib environment temporarily.
+    Thanks to Jacob L Anawalt for the bug report. (Closes: #820395)
+  * debian/copyright: change Copyright-Format 1.0 URL to HTTPS.
+  * DhMakePerl::Utils: when checking for core modules, look at current
+    perl.
+    Various helpers which check if a module is in Perl core or starting from
+    which version only looked at the first Perl version. This ignored cases
+    where a package was removed from core at some point.
+    Change those methods to return if a module is not currently in Perl core.
+    Thanks to Peter Valdemar Mørch for the bug report. (Closes: #788198)
+  * DhMakePerl::Command::Packaging: don't enforce 9.20120312~ for
+    debhelper in arch:any packages anymore. There is no older version in
+    the archive anymore.
+
+  [ Sean Whitton ]
+  * Strip comments when reading control files.  (Closes: #823708)
+    Otherwise, control files containing comments cause a parse failure.
+
+  [ Salvatore Bonaccorso ]
+  * Use HTTPS transport protocol for Format URI in copyright file.
+    Refresh or create new copyright files using HTTPS transport protocol for
+    the Format URI to the copyright format specification.
+    Adjust tests to use HTTPS transport protocol as well in the Format
+    fields.
+  * Use HTTPS transport protocol for various URLs in POD
+
+  [ Nick Morrott ]
+  * DhMakePerl::Command::Packaging:
+    - remove trailing whitespace from Artistic 2.0 license text
+    - remove trailing whitespace from copyright DISCLAIMER text
+
+  [ gregor herrmann ]
+  * Update copyright holder list for DhMakePerl::Command::Packaging.
+  * Split package into dh-make-perl and libdebian-source-perl.
+    The latter contains generally useful Perl modules.
+    Thanks to Sean Whitton for the bug report.
+    (Closes: #823067)
 
 0.90 (2016-04-06)
 
