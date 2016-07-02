@@ -1,4 +1,4 @@
-dh-make-perl (0.91) UNRELEASED; urgency=medium
+dh-make-perl (0.91) unstable; urgency=medium
 
   [ gregor herrmann ]
   * debian/source/format: switch to '3.0 (native)'.
@@ -56,7 +56,7 @@ dh-make-perl (0.91) UNRELEASED; urgency=medium
     Thanks to Sean Whitton for the bug report.
     (Closes: #823067)
 
- -- gregor herrmann <gregoa@debian.org>  Wed, 06 Apr 2016 17:35:59 +0200
+ -- gregor herrmann <gregoa@debian.org>  Sat, 02 Jul 2016 13:45:02 +0200
 
 dh-make-perl (0.90-1) unstable; urgency=medium
 
