@@ -85,9 +85,6 @@ use constant DEFAULTS => {
     verbose       => 1,
 };
 
-my $e = DEFAULTS->{'exclude'};
-DEFAULTS->{'exclude'} = qr/$e/;
-
 use constant cpan2deb_DEFAULTS => {
     build   => 1,
 
