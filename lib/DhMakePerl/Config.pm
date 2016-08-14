@@ -71,7 +71,7 @@ use constant DEFAULTS => {
     dh            => 9,
     dist          => '',
     email         => '',
-    exclude       => qr/$Dpkg::Source::Package::diff_ignore_default_regexp/,
+    exclude       => Dpkg::Source::Package->get_default_diff_ignore_regex(),
     home_dir      => "$ENV{HOME}/.dh-make-perl",
     network       => 1,
     only          => {
@@ -84,6 +84,9 @@ use constant DEFAULTS => {
     vcs           => 'git',
     verbose       => 1,
 };
+
+my $e = DEFAULTS->{'exclude'};
+DEFAULTS->{'exclude'} = qr/$e/;
 
 use constant cpan2deb_DEFAULTS => {
     build   => 1,
