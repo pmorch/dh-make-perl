@@ -1,4 +1,2 @@
-# the switch from 0.90-1 to 0.91 (i.e. going back to a native package) is intentional
-libdebian-source-perl: latest-debian-changelog-entry-changed-to-native
 # no module by this name
 libdebian-source-perl: perl-module-name-not-mentioned-in-description Debian::Source
