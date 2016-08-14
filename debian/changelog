@@ -8,7 +8,8 @@ dh-make-perl (0.92) UNRELEASED; urgency=medium
   * Use Dpkg::Source::Package's get_default_diff_ignore_regex() function
     instead of the deprecated $diff_ignore_default_regexp string.
     Thanks to Guillem Jover for the bug report. (Closes: #834199)
-  * Drop latest-debian-changelog-entry-changed-to-native lintian override.
+  * Drop latest-debian-changelog-entry-changed-to-native lintian overrides.
+  * Add t/dists/Strange-2.1/DEADJOE to test default exclude regexp.
 
  -- Christian Hofstaedtler <zeha@debian.org>  Sun, 17 Jul 2016 16:55:59 +0000
 
