@@ -11,6 +11,7 @@ dh-make-perl (0.92) UNRELEASED; urgency=medium
   * Drop latest-debian-changelog-entry-changed-to-native lintian overrides.
   * Add t/dists/Strange-2.1/DEADJOE to test default exclude regexp.
   * Remove Nathan Handler from Uploaders. Thanks for your work!
+  * Remove Ryan Niebur from Uploaders. Thanks for your work!
 
  -- Christian Hofstaedtler <zeha@debian.org>  Sun, 17 Jul 2016 16:55:59 +0000
 
