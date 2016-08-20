@@ -4,7 +4,6 @@ Uploaders: Wolfgang Schemmel <debian@37.org>,
            Damyan Ivanov <dmn@debian.org>,
            gregor herrmann <gregoa@debian.org>,
            Oliver Gorwits <oliver.gorwits@oucs.ox.ac.uk>,
-           Ryan Niebur <ryan@debian.org>,
            Salvatore Bonaccorso <carnil@debian.org>,
            Axel Beckert <abe@debian.org>
 Section: perl
