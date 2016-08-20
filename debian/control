@@ -1,15 +1,14 @@
 Source: dh-make-perl
-Homepage: https://metacpan.org/release/DhMakePerl
 Maintainer: Debian Perl Group <pkg-perl-maintainers@lists.alioth.debian.org>
 Uploaders: Wolfgang Schemmel <debian@37.org>,
            Damyan Ivanov <dmn@debian.org>,
            gregor herrmann <gregoa@debian.org>,
            Oliver Gorwits <oliver.gorwits@oucs.ox.ac.uk>,
            Ryan Niebur <ryan@debian.org>,
-           Nathan Handler <nhandler@debian.org>,
            Salvatore Bonaccorso <carnil@debian.org>,
            Axel Beckert <abe@debian.org>
 Section: perl
+Testsuite: autopkgtest-pkg-perl
 Priority: optional
 Build-Depends: debhelper (>= 9),
                libmodule-build-perl,
@@ -49,7 +48,7 @@ Build-Depends-Indep: libapt-pkg-perl,
 Standards-Version: 3.9.8
 Vcs-Browser: https://anonscm.debian.org/cgit/pkg-perl/packages/dh-make-perl.git
 Vcs-Git: https://anonscm.debian.org/git/pkg-perl/packages/dh-make-perl.git
-Testsuite: autopkgtest-pkg-perl
+Homepage: https://metacpan.org/release/DhMakePerl
 
 Package: dh-make-perl
 Architecture: all
