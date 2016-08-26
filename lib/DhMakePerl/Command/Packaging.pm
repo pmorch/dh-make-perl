@@ -661,16 +661,16 @@ sub extract_desc {
     my ( $self, $file ) = @_;
 
     my $bin = $self->control->binary_tie->Values(0);
-    my $desc = $bin->short_description;
+    my $short_desc = $bin->short_description;
 
-    $desc and return;
+    $short_desc and return;
 
     return unless -f $file;
     my ( $parser, $modulename );
     $parser = new DhMakePerl::PodParser;
     $parser->set_names(qw(NAME DESCRIPTION DETAILS));
     $parser->parse_from_file($file);
-    if ( $desc ) {
+    if ( $short_desc ) {
 
         # No-op - We already have it, probably from the command line
 
@@ -678,7 +678,7 @@ sub extract_desc {
     elsif ( $self->meta->{abstract} ) {
 
         # Get it from META.yml
-        $desc = $self->meta->{abstract};
+        $short_desc = $self->meta->{abstract};
 
     }
     elsif ( my $my_desc = $parser->get('NAME') ) {
@@ -689,20 +689,20 @@ sub extract_desc {
         $my_desc =~ s/\s+$//s;
         $my_desc =~ s/^([^\s])/ $1/mg;
         $my_desc =~ s/\n.*$//s;
-        $desc = $my_desc;
+        $short_desc = $my_desc;
     }
 
-    if ( defined($desc) ) {
+    if ( defined($short_desc) ) {
         # Replace linefeed (not followed by a space) in short description with
         # spaces
-        $desc =~ s/\n(?=\S)/ /gs;
-        $desc =~ s/^\s+//;      # strip leading spaces
+        $short_desc =~ s/\n(?=\S)/ /gs;
+        $short_desc =~ s/^\s+//;      # strip leading spaces
     }
 
     # have a fall-back for the short description
-    $desc ||= '(no short description found)';
+    $short_desc ||= '(no short description found)';
 
-    $bin->short_description($desc);
+    $bin->short_description($short_desc);
 
     my $long_desc;
     unless ( $bin->long_description ) {
