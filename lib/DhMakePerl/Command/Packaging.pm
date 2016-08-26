@@ -1429,7 +1429,7 @@ sub discover_dependencies {
     }
     else {
         warn "No APT contents can be loaded.\n";
-        warn "Please install 'apt-file' package (at least version 2.5.0) and\n";
+        warn "Please install the 'apt-file' package (at least version 3) and\n";
         warn "run 'apt-file update' as root.\n";
         warn "Dependencies not updated.\n";
 
