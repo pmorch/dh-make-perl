@@ -696,7 +696,8 @@ sub extract_desc {
         # Replace linefeed (not followed by a space) in short description with
         # spaces
         $short_desc =~ s/\n(?=\S)/ /gs;
-        $short_desc =~ s/^\s+//;      # strip leading spaces
+        $short_desc =~ s/^\s+//;                   # strip leading spaces
+        $short_desc =~ s/^(?:(A|An|The))\s+//i;    # strip leading article
     }
 
     # have a fall-back for the short description
