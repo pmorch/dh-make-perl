@@ -11,7 +11,7 @@ override_dh_auto_test:
 	HOME=$(BUILDHOME) NO_NETWORK=1 dh_auto_test
 
 override_dh_clean:
-	dh_clean
+	dh_clean -Xt/dists/Strange-2.1/DEADJOE
 	rm -rf $(BUILDHOME)
 
 	# clean after test packages
