@@ -8,7 +8,7 @@ DhMakePerl::Command::dump_config - dh-make-perl dump-config implementation
 
 use strict; use warnings;
 
-our $VERSION = '0.92';
+our $VERSION = '0.93';
 
 use base 'DhMakePerl';
 

@@ -52,7 +52,7 @@ use base 'Class::Accessor';
 use strict;
 use warnings;
 
-our $VERSION = '0.92';
+our $VERSION = '0.93';
 
 __PACKAGE__->mk_accessors(qw( source binary binary_tie _parser ));
 

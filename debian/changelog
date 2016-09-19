@@ -1,3 +1,9 @@
+dh-make-perl (0.93) UNRELEASED; urgency=medium
+
+  * Bump $VERSION.
+
+ -- Axel Beckert <abe@debian.org>  Tue, 20 Sep 2016 00:26:27 +0200
+
 dh-make-perl (0.92) unstable; urgency=medium
 
   [ Christian Hofstaedtler ]
