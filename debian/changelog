@@ -18,6 +18,9 @@ dh-make-perl (0.92) UNRELEASED; urgency=medium
     warnings during tests.
   * debian/control: remove Homepage field which still pointed to MetaCPAN.
 
+  [ Axel Beckert ]
+  * lib/Debian/AptContents.pm: Fix typo in code comment.
+
  -- Christian Hofstaedtler <zeha@debian.org>  Sun, 17 Jul 2016 16:55:59 +0000
 
 dh-make-perl (0.91) unstable; urgency=medium

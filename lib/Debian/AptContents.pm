@@ -371,7 +371,7 @@ sub find_perl_module_package {
 
     if ($core_dep) {
 
-        # the core dependency is satosfied by oldstable?
+        # the core dependency is satisfied by oldstable?
         if ( $core_dep->ver <= $oldstable_perl ) {
             # drop the direct dependency and remove the version
             undef($direct_dep);
