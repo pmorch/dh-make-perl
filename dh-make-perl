@@ -117,7 +117,7 @@ arguments.
 
 =item locate I<MODULE> ...
 
-Tries to locate the package that conains the given Perl I<MODULE>s.
+Tries to locate the package that contains the given Perl I<MODULE>s.
 
 Example:
 
