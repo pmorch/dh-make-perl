@@ -1,6 +1,13 @@
 dh-make-perl (0.93) UNRELEASED; urgency=medium
 
+  [ Axel Beckert ]
   * Bump $VERSION.
+
+  [ gregor herrmann ]
+  * DhMakePerl::Command::Packaging: replace "This plugin" with the module
+    name in the long description, like we already did with "This module"
+    and "This library".
+  * Fix a typo in dh-make-perl's POD. Thanks to lintian.
 
  -- Axel Beckert <abe@debian.org>  Tue, 20 Sep 2016 00:26:27 +0200
 
