@@ -8,6 +8,9 @@ dh-make-perl (0.93) UNRELEASED; urgency=medium
     name in the long description, like we already did with "This module"
     and "This library".
   * Fix a typo in dh-make-perl's POD. Thanks to lintian.
+  * Extend checks for 'perl-modules'.
+    perl-modules has been replaced by perl-modules-5.2[24]. Adapt checks
+    for it.
 
  -- Axel Beckert <abe@debian.org>  Tue, 20 Sep 2016 00:26:27 +0200
 
