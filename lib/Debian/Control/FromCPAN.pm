@@ -404,7 +404,7 @@ sub find_debs_for_modules {
 
                 if ( my @pkgs = Debian::DpkgLists->scan_perl_mod($module) ) {
                     @pkgs = grep {
-                                ( $_ ne 'perl-modules' )
+                                ( $_ !~ /^perl-modules(?:-[\d.]+)?$/ )
                             and ( $_ ne 'perl-base' )
                             and ( $_ ne 'perl' )
                     } @pkgs;
@@ -477,7 +477,7 @@ The following checks are made
 
 =over
 
-=item dependencies on C<perl-modules>
+=item dependencies on C<perl-modules*>
 
 These are replaced with C<perl> as per Perl policy.
 
@@ -499,7 +499,7 @@ if the dependency is redundant.
 
 =item pruned dependency
 
-otherwise. C<perl-modules> replaced with C<perl>.
+otherwise. C<perl-modules*> replaced with C<perl>.
 
 =back
 
@@ -511,10 +511,10 @@ sub prune_simple_perl_dep {
     croak "No alternative dependencies can be given"
         if $dep->alternatives;
 
-    return $dep unless $dep->pkg =~ /^(?:perl|perl-base|perl-modules)$/;
+    return $dep unless $dep->pkg =~ /^(?:perl|perl-base|perl-modules(?:-[\d.]+)?)$/;
 
     # perl-modules is replaced with perl
-    $dep->pkg('perl') if $dep->pkg eq 'perl-modules';
+    $dep->pkg('perl') if $dep->pkg =~ /^perl-modules(?:-[\d.]+)?$/;
 
     my $unversioned = (
         not $dep->ver

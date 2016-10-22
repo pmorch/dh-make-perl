@@ -318,7 +318,7 @@ sub find_file_packages {
     @packages = grep {
         ( $_         ne 'perl-base' )
             and ( $_ ne 'perl' )
-            and ( $_ ne 'perl-modules' )
+            and ( $_ !~ /^perl-modules(?:-[\d.]+)?/ )
     } @packages;
 
     return uniq @packages;
@@ -359,7 +359,7 @@ sub find_perl_module_package {
     } @matches;
 
     # we don't want perl, perl-base and perl-modules here
-    @matches = grep { !/^perl(?:-(?:base|modules))?$/ } @matches;
+    @matches = grep { !/^perl(?:-(?:base|modules(?:-[\d.]+)?))?$/ } @matches;
 
     my $direct_dep;
     $direct_dep = Debian::Dependency->new(
