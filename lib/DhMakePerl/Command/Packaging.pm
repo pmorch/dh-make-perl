@@ -356,8 +356,14 @@ sub extract_name_ver {
         $ver  = $self->version;
     }
 
-    $ver = $self->cfg->version
-        if $self->cfg->version;
+    if ($self->cfg->version) {
+        #Version specified on command line trumps other versions
+        $ver = $self->cfg->version
+    } elsif ( $self->mod_cpan_version ) {
+        if ($self->mod_cpan_version != $ver) {
+            die "Version ambiguity, cpan has ".$self->mod_cpan_version.", module has ".$ver.". Please specify version with --version.\n";
+        }
+    }
 
     # final sanitazing of name and version
     $name =~ s/::/-/g if defined $name;
