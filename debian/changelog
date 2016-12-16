@@ -14,6 +14,10 @@ dh-make-perl (0.93) UNRELEASED; urgency=medium
   * Remove headers from Contents test files. Thanks to Paul Wise for the
     bug report. (Closes: #842887)
 
+  [ Christopher Hoskin ]
+  * Require user intervention to resolve version ambiguity
+    (Closes: #848337)
+
  -- Axel Beckert <abe@debian.org>  Tue, 20 Sep 2016 00:26:27 +0200
 
 dh-make-perl (0.92) unstable; urgency=medium
