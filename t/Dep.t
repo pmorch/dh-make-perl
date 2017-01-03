@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 
-use Test::More tests => 167;
+use Test::More;
 
 BEGIN {
     use_ok('Debian::Dependency');
@@ -261,3 +261,5 @@ comp( 'bar|foo', 'bar|baz', 1 );
 comp( 'foo|bar', 'foo|bar', 0 );
 comp( 'foo|bar', 'foo', 1 );
 comp( 'foo', 'foo|bar', -1 );
+
+done_testing();
