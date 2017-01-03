@@ -66,6 +66,30 @@ $d = new_ok( 'Debian::Dependency', [ 'foo | bar' ] );
 isa_ok( $d->alternatives, 'ARRAY' );
 is( "$d", "foo | bar", "alternative dependency stringifies" );
 
+# architectures and build-profiles
+my $abp = eval { Debian::Dependency->new('libfoo [amd64]') };
+ok( !$@, 'dep with 1 architecture parsed' );
+$abp = eval { Debian::Dependency->new('libfoo [amd64 i396]') };
+ok( !$@, 'dep with 2 architectures parsed' );
+$abp = eval { Debian::Dependency->new('libfoo (>= 42) [amd64]') };
+ok( !$@, 'dep with version and 1 architecture parsed' );
+$abp = eval { Debian::Dependency->new('libfoo (>= 42) [amd64 i396]') };
+ok( !$@, 'dep with version and 2 architectures parsed' );
+$abp = eval { Debian::Dependency->new('libfoo <stage1>') };
+ok( !$@, 'dep with 1 build profile parsed' );
+$abp = eval { Debian::Dependency->new('libfoo <stage1> <stage2>') };
+ok( !$@, 'dep with 2 separate build profiles parsed' );
+$abp = eval { Debian::Dependency->new('libfoo <stage1 cross>') };
+ok( !$@, 'dep with 1 build profile with 2 terms parsed' );
+$abp = eval { Debian::Dependency->new('libfoo <!stage1> <!cross>') };
+ok( !$@, 'dep with 2 separate negated build profiles parsed' );
+$abp = eval { Debian::Dependency->new('libfoo (>= 23) <stage1>') };
+ok( !$@, 'dep with version and build profile parsed' );
+$abp = eval { Debian::Dependency->new('libfoo [amd64] <stage1>') };
+ok( !$@, 'dep with architecture and build profile parsed' );
+$abp = eval { Debian::Dependency->new('libfoo (>= 23) [amd64] <stage1>') };
+ok( !$@, 'dep with version and architecture and build profile parsed' );
+
 sub sat( $ $ $ ) {
     my( $dep, $test, $expected ) = @_;
 
