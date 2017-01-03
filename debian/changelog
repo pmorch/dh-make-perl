@@ -18,6 +18,11 @@ dh-make-perl (0.93) UNRELEASED; urgency=medium
   * Require user intervention to resolve version ambiguity
     (Closes: #848337)
 
+  [ gregor herrmann ]
+  * Debian::Dependency: add support for build profiles (so called
+    "restriction formulas") to the parse() function.
+    Thanks to David Bremner for the bug report. (Closes: #850000)
+
  -- Axel Beckert <abe@debian.org>  Tue, 20 Sep 2016 00:26:27 +0200
 
 dh-make-perl (0.92) unstable; urgency=medium
