@@ -315,6 +315,16 @@ sub parse {
                     )+
                 \]
             )?
+            (?:             # "restriction formulas" (build profile) is optional
+                \s*         # optional space
+                <
+                    (?:
+                        !?             # negation is optional
+                        [^\s>]+        # build profile name
+                        (?:\s+|(?=>) ) # whitespace or end
+                    )+
+                >
+            )*              # can appear several times
             $}x    # done
         )
     {
