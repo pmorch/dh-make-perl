@@ -323,9 +323,9 @@ sub read_cache {
                     next unless $file =~ s{
                         ^usr/
                         (?:share|lib)/
-                        (?:\S+-\S+-\S+/)?      # opt. arch. triplet, eg. x86_64-linux-gnu
                         (?:perl\d+/             # perl5/
                         | perl/(?:\d[\d.]+)/   # or perl/5.10/
+                        | \S+-\S+-\S+/perl\d+/(?:\d[\d.]+)/  # x86_64-linux-gnu/perl5/5.22/
                         )
                     }{}x;
                     $cache->{apt_contents}{$file} = exists $cache->{apt_contents}{$file}
