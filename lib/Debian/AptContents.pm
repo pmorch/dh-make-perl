@@ -315,31 +315,25 @@ sub read_cache {
             }
 
             $self->warning( 1, "Parsing $_ ..." );
-            my $capturing = 0;
             my $line;
             while ( defined( $line = $f->getline ) ) {
-                if ($capturing) {
-                    my ( $file, $packages ) = split( /\s+/, $line );
-                    next unless $file =~ s{
-                        ^usr/
-                        (?:share|lib)/
-                        (?:perl\d+/             # perl5/
-                        | perl/(?:\d[\d.]+)/   # or perl/5.10/
-                        | \S+-\S+-\S+/perl\d+/(?:\d[\d.]+)/  # x86_64-linux-gnu/perl5/5.22/
-                        )
-                    }{}x;
-                    $cache->{apt_contents}{$file} = exists $cache->{apt_contents}{$file}
-                        ? $cache->{apt_contents}{$file}.','.$packages
-                        : $packages;
+                my ( $file, $packages ) = split( /\s+/, $line );
+                next unless $file =~ s{
+                    ^usr/
+                    (?:share|lib)/
+                    (?:perl\d+/             # perl5/
+                    | perl/(?:\d[\d.]+)/   # or perl/5.10/
+                    | \S+-\S+-\S+/perl\d+/(?:\d[\d.]+)/  # x86_64-linux-gnu/perl5/5.22/
+                    )
+                }{}x;
+                $cache->{apt_contents}{$file} = exists $cache->{apt_contents}{$file}
+                    ? $cache->{apt_contents}{$file}.','.$packages
+                    : $packages;
 
-                    # $packages is a comma-separated list of
-                    # section/package items. We'll parse it when a file
-                    # matches. Otherwise we'd parse thousands of entries,
-                    # while checking only a couple
-                }
-                else {
-                    $capturing = 1 if $line =~ /^FILE\s+LOCATION/;
-                }
+                # $packages is a comma-separated list of
+                # section/package items. We'll parse it when a file
+                # matches. Otherwise we'd parse thousands of entries,
+                # while checking only a couple
             }
         }
 
