@@ -323,6 +323,7 @@ sub read_cache {
                     next unless $file =~ s{
                         ^usr/
                         (?:share|lib)/
+                        (?:\S+-\S+-\S+/)?      # opt. arch. triplet, eg. x86_64-linux-gnu
                         (?:perl\d+/             # perl5/
                         | perl/(?:\d[\d.]+)/   # or perl/5.10/
                         )
